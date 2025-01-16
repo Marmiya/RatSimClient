@@ -57,13 +57,6 @@ class LidarService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>> PrepareAsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>>(PrepareAsyncGetLiDARDataAndOdomRaw(context, request, cq));
     }
-    virtual ::grpc::Status SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::RatSim::Status* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> AsyncSendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(AsyncSendPointsRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> PrepareAsyncSendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(PrepareAsyncSendPointsRaw(context, request, cq));
-    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -73,8 +66,6 @@ class LidarService final {
       virtual void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -86,8 +77,6 @@ class LidarService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>* AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>* PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* AsyncSendPointsRaw(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* PrepareAsyncSendPointsRaw(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -113,13 +102,6 @@ class LidarService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>> PrepareAsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>>(PrepareAsyncGetLiDARDataAndOdomRaw(context, request, cq));
     }
-    ::grpc::Status SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::RatSim::Status* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> AsyncSendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(AsyncSendPointsRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> PrepareAsyncSendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(PrepareAsyncSendPointsRaw(context, request, cq));
-    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -129,8 +111,6 @@ class LidarService final {
       void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)>) override;
       void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) override;
-      void SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -148,12 +128,9 @@ class LidarService final {
     ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* AsyncSendPointsRaw(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PrepareAsyncSendPointsRaw(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetLiDARData_;
     const ::grpc::internal::RpcMethod rpcmethod_GetLiDAROdom_;
     const ::grpc::internal::RpcMethod rpcmethod_GetLiDARDataAndOdom_;
-    const ::grpc::internal::RpcMethod rpcmethod_SendPoints_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -164,7 +141,6 @@ class LidarService final {
     virtual ::grpc::Status GetLiDARData(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response);
     virtual ::grpc::Status GetLiDAROdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response);
     virtual ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response);
-    virtual ::grpc::Status SendPoints(::grpc::ServerContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetLiDARData : public BaseClass {
@@ -226,27 +202,7 @@ class LidarService final {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  template <class BaseClass>
-  class WithAsyncMethod_SendPoints : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_SendPoints() {
-      ::grpc::Service::MarkMethodAsync(3);
-    }
-    ~WithAsyncMethod_SendPoints() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendPoints(::grpc::ServerContext* /*context*/, const ::RatSim::LidarData* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSendPoints(::grpc::ServerContext* context, ::RatSim::LidarData* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_GetLiDARData<WithAsyncMethod_GetLiDAROdom<WithAsyncMethod_GetLiDARDataAndOdom<WithAsyncMethod_SendPoints<Service > > > > AsyncService;
+  typedef WithAsyncMethod_GetLiDARData<WithAsyncMethod_GetLiDAROdom<WithAsyncMethod_GetLiDARDataAndOdom<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_GetLiDARData : public BaseClass {
    private:
@@ -328,34 +284,7 @@ class LidarService final {
     virtual ::grpc::ServerUnaryReactor* GetLiDARDataAndOdom(
       ::grpc::CallbackServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/)  { return nullptr; }
   };
-  template <class BaseClass>
-  class WithCallbackMethod_SendPoints : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_SendPoints() {
-      ::grpc::Service::MarkMethodCallback(3,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::LidarData, ::RatSim::Status>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response) { return this->SendPoints(context, request, response); }));}
-    void SetMessageAllocatorFor_SendPoints(
-        ::grpc::MessageAllocator< ::RatSim::LidarData, ::RatSim::Status>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::LidarData, ::RatSim::Status>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_SendPoints() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendPoints(::grpc::ServerContext* /*context*/, const ::RatSim::LidarData* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SendPoints(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::LidarData* /*request*/, ::RatSim::Status* /*response*/)  { return nullptr; }
-  };
-  typedef WithCallbackMethod_GetLiDARData<WithCallbackMethod_GetLiDAROdom<WithCallbackMethod_GetLiDARDataAndOdom<WithCallbackMethod_SendPoints<Service > > > > CallbackService;
+  typedef WithCallbackMethod_GetLiDARData<WithCallbackMethod_GetLiDAROdom<WithCallbackMethod_GetLiDARDataAndOdom<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetLiDARData : public BaseClass {
@@ -404,23 +333,6 @@ class LidarService final {
     }
     // disable synchronous version of this method
     ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_SendPoints : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_SendPoints() {
-      ::grpc::Service::MarkMethodGeneric(3);
-    }
-    ~WithGenericMethod_SendPoints() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendPoints(::grpc::ServerContext* /*context*/, const ::RatSim::LidarData* /*request*/, ::RatSim::Status* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -483,26 +395,6 @@ class LidarService final {
     }
     void RequestGetLiDARDataAndOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_SendPoints : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_SendPoints() {
-      ::grpc::Service::MarkMethodRaw(3);
-    }
-    ~WithRawMethod_SendPoints() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendPoints(::grpc::ServerContext* /*context*/, const ::RatSim::LidarData* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSendPoints(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -569,28 +461,6 @@ class LidarService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* GetLiDARDataAndOdom(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_SendPoints : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_SendPoints() {
-      ::grpc::Service::MarkMethodRawCallback(3,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendPoints(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_SendPoints() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendPoints(::grpc::ServerContext* /*context*/, const ::RatSim::LidarData* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SendPoints(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -674,36 +544,9 @@ class LidarService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetLiDARDataAndOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::EmptyRequest,::RatSim::LidarDataAndOdom>* server_unary_streamer) = 0;
   };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_SendPoints : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_SendPoints() {
-      ::grpc::Service::MarkMethodStreamed(3,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::LidarData, ::RatSim::Status>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::RatSim::LidarData, ::RatSim::Status>* streamer) {
-                       return this->StreamedSendPoints(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_SendPoints() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status SendPoints(::grpc::ServerContext* /*context*/, const ::RatSim::LidarData* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSendPoints(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::LidarData,::RatSim::Status>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_GetLiDARData<WithStreamedUnaryMethod_GetLiDAROdom<WithStreamedUnaryMethod_GetLiDARDataAndOdom<WithStreamedUnaryMethod_SendPoints<Service > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_GetLiDARData<WithStreamedUnaryMethod_GetLiDAROdom<WithStreamedUnaryMethod_GetLiDARDataAndOdom<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetLiDARData<WithStreamedUnaryMethod_GetLiDAROdom<WithStreamedUnaryMethod_GetLiDARDataAndOdom<WithStreamedUnaryMethod_SendPoints<Service > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_GetLiDARData<WithStreamedUnaryMethod_GetLiDAROdom<WithStreamedUnaryMethod_GetLiDARDataAndOdom<Service > > > StreamedService;
 };
 
 class MeshService final {
@@ -911,6 +754,213 @@ class MeshService final {
   typedef WithStreamedUnaryMethod_SendMesh<Service > StreamedUnaryService;
   typedef Service SplitStreamedService;
   typedef WithStreamedUnaryMethod_SendMesh<Service > StreamedService;
+};
+
+class PointCloudService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "RatSim.PointCloudService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::RatSim::Status* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> AsyncSendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(AsyncSendPointCloudWithColorRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> PrepareAsyncSendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(PrepareAsyncSendPointCloudWithColorRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* AsyncSendPointCloudWithColorRaw(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* PrepareAsyncSendPointCloudWithColorRaw(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::RatSim::Status* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> AsyncSendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(AsyncSendPointCloudWithColorRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> PrepareAsyncSendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(PrepareAsyncSendPointCloudWithColorRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) override;
+      void SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* AsyncSendPointCloudWithColorRaw(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PrepareAsyncSendPointCloudWithColorRaw(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_SendPointCloudWithColor_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status SendPointCloudWithColor(::grpc::ServerContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SendPointCloudWithColor : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SendPointCloudWithColor() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_SendPointCloudWithColor() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendPointCloudWithColor(::grpc::ServerContext* /*context*/, const ::RatSim::PointCloudWithColor* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendPointCloudWithColor(::grpc::ServerContext* context, ::RatSim::PointCloudWithColor* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SendPointCloudWithColor<Service > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_SendPointCloudWithColor : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SendPointCloudWithColor() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::PointCloudWithColor, ::RatSim::Status>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response) { return this->SendPointCloudWithColor(context, request, response); }));}
+    void SetMessageAllocatorFor_SendPointCloudWithColor(
+        ::grpc::MessageAllocator< ::RatSim::PointCloudWithColor, ::RatSim::Status>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::PointCloudWithColor, ::RatSim::Status>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SendPointCloudWithColor() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendPointCloudWithColor(::grpc::ServerContext* /*context*/, const ::RatSim::PointCloudWithColor* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendPointCloudWithColor(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::PointCloudWithColor* /*request*/, ::RatSim::Status* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SendPointCloudWithColor<Service > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_SendPointCloudWithColor : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SendPointCloudWithColor() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_SendPointCloudWithColor() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendPointCloudWithColor(::grpc::ServerContext* /*context*/, const ::RatSim::PointCloudWithColor* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SendPointCloudWithColor : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SendPointCloudWithColor() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_SendPointCloudWithColor() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendPointCloudWithColor(::grpc::ServerContext* /*context*/, const ::RatSim::PointCloudWithColor* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendPointCloudWithColor(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SendPointCloudWithColor : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SendPointCloudWithColor() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendPointCloudWithColor(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SendPointCloudWithColor() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendPointCloudWithColor(::grpc::ServerContext* /*context*/, const ::RatSim::PointCloudWithColor* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendPointCloudWithColor(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SendPointCloudWithColor : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SendPointCloudWithColor() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::PointCloudWithColor, ::RatSim::Status>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::PointCloudWithColor, ::RatSim::Status>* streamer) {
+                       return this->StreamedSendPointCloudWithColor(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SendPointCloudWithColor() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SendPointCloudWithColor(::grpc::ServerContext* /*context*/, const ::RatSim::PointCloudWithColor* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSendPointCloudWithColor(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::PointCloudWithColor,::RatSim::Status>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_SendPointCloudWithColor<Service > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_SendPointCloudWithColor<Service > StreamedService;
 };
 
 class DepthCameraService final {

@@ -25,7 +25,6 @@ static const char* LidarService_method_names[] = {
   "/RatSim.LidarService/GetLiDARData",
   "/RatSim.LidarService/GetLiDAROdom",
   "/RatSim.LidarService/GetLiDARDataAndOdom",
-  "/RatSim.LidarService/SendPoints",
 };
 
 std::unique_ptr< LidarService::Stub> LidarService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -38,7 +37,6 @@ LidarService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   : channel_(channel), rpcmethod_GetLiDARData_(LidarService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetLiDAROdom_(LidarService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetLiDARDataAndOdom_(LidarService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SendPoints_(LidarService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status LidarService::Stub::GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::LidarData* response) {
@@ -110,29 +108,6 @@ void LidarService::Stub::async::GetLiDARDataAndOdom(::grpc::ClientContext* conte
   return result;
 }
 
-::grpc::Status LidarService::Stub::SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::RatSim::Status* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::LidarData, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SendPoints_, context, request, response);
-}
-
-void LidarService::Stub::async::SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::LidarData, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendPoints_, context, request, response, std::move(f));
-}
-
-void LidarService::Stub::async::SendPoints(::grpc::ClientContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendPoints_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Status>* LidarService::Stub::PrepareAsyncSendPointsRaw(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Status, ::RatSim::LidarData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SendPoints_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Status>* LidarService::Stub::AsyncSendPointsRaw(::grpc::ClientContext* context, const ::RatSim::LidarData& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSendPointsRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
 LidarService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LidarService_method_names[0],
@@ -164,16 +139,6 @@ LidarService::Service::Service() {
              ::RatSim::LidarDataAndOdom* resp) {
                return service->GetLiDARDataAndOdom(ctx, req, resp);
              }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LidarService_method_names[3],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< LidarService::Service, ::RatSim::LidarData, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](LidarService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::RatSim::LidarData* req,
-             ::RatSim::Status* resp) {
-               return service->SendPoints(ctx, req, resp);
-             }, this)));
 }
 
 LidarService::Service::~Service() {
@@ -194,13 +159,6 @@ LidarService::Service::~Service() {
 }
 
 ::grpc::Status LidarService::Service::GetLiDARDataAndOdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status LidarService::Service::SendPoints(::grpc::ServerContext* context, const ::RatSim::LidarData* request, ::RatSim::Status* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -262,6 +220,67 @@ MeshService::Service::~Service() {
 }
 
 ::grpc::Status MeshService::Service::SendMesh(::grpc::ServerContext* context, const ::RatSim::MeshData* request, ::RatSim::Status* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
+static const char* PointCloudService_method_names[] = {
+  "/RatSim.PointCloudService/SendPointCloudWithColor",
+};
+
+std::unique_ptr< PointCloudService::Stub> PointCloudService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< PointCloudService::Stub> stub(new PointCloudService::Stub(channel, options));
+  return stub;
+}
+
+PointCloudService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_SendPointCloudWithColor_(PointCloudService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status PointCloudService::Stub::SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::RatSim::Status* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::PointCloudWithColor, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SendPointCloudWithColor_, context, request, response);
+}
+
+void PointCloudService::Stub::async::SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::PointCloudWithColor, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendPointCloudWithColor_, context, request, response, std::move(f));
+}
+
+void PointCloudService::Stub::async::SendPointCloudWithColor(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendPointCloudWithColor_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PointCloudService::Stub::PrepareAsyncSendPointCloudWithColorRaw(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Status, ::RatSim::PointCloudWithColor, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SendPointCloudWithColor_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PointCloudService::Stub::AsyncSendPointCloudWithColorRaw(::grpc::ClientContext* context, const ::RatSim::PointCloudWithColor& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSendPointCloudWithColorRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+PointCloudService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      PointCloudService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< PointCloudService::Service, ::RatSim::PointCloudWithColor, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](PointCloudService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::PointCloudWithColor* req,
+             ::RatSim::Status* resp) {
+               return service->SendPointCloudWithColor(ctx, req, resp);
+             }, this)));
+}
+
+PointCloudService::Service::~Service() {
+}
+
+::grpc::Status PointCloudService::Service::SendPointCloudWithColor(::grpc::ServerContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response) {
   (void) context;
   (void) request;
   (void) response;

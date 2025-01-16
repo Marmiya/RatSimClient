@@ -62,9 +62,9 @@ target_link_libraries(ratsim_lidar
   OpenSSL::Crypto
 )
 
-add_executable(send_points src/send_points.cpp)
+add_executable(send_mesh src/SendMesh.cpp)
 
-target_link_libraries(send_points
+target_link_libraries(send_mesh
   ratsim_proto
   ${catkin_LIBRARIES}
   ${PCL_LIBRARIES}
@@ -75,6 +75,21 @@ target_link_libraries(send_points
   OpenSSL::Crypto
   ${LZ4_LIBRARIES}
 )
+
+add_executable(send_pointcloud src/SendPointCloud.cpp)
+
+target_link_libraries(send_pointcloud
+  ratsim_proto
+  ${catkin_LIBRARIES}
+  ${PCL_LIBRARIES}
+  protobuf::libprotobuf
+  gRPC::grpc++
+  gRPC::grpc
+  OpenSSL::SSL
+  OpenSSL::Crypto
+  ${LZ4_LIBRARIES}
+)
+
 
 cs_install()
 cs_export()

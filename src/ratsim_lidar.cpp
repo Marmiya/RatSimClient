@@ -80,21 +80,19 @@ public:
     double lidar_y = lidar_pose.y() / 100.0;
     double lidar_z = lidar_pose.z() / 100.0;
 
-    for (const auto& point : lidar_data) {
-        // Only process points that have hit something (using the hit field from LidarPoint)
-        if (point.hit() && point.z() > -0.05) {
-            double x = point.x() / 100.0;
-            double y = -point.y() / 100.0;
-            double z = point.z() / 100.0;
+    for (const auto& point : lidar_data) 
+    {    
+        double x = point.x() / 100.0;
+        double y = -point.y() / 100.0;
+        double z = point.z() / 100.0;
 
-            double distance = calculateDistanceToLidar(x, y, z, lidar_x, -lidar_y, lidar_z);
-            if (distance >= MIN_DISTANCE) {
-                pcl::PointXYZ pcl_point;
-                pcl_point.x = x;
-                pcl_point.y = y;
-                pcl_point.z = z;
-                cloud->points.push_back(pcl_point);
-            }
+        double distance = calculateDistanceToLidar(x, y, z, lidar_x, -lidar_y, lidar_z);
+        if (distance >= MIN_DISTANCE) {
+            pcl::PointXYZ pcl_point;
+            pcl_point.x = x;
+            pcl_point.y = y;
+            pcl_point.z = z;
+            cloud->points.push_back(pcl_point);
         }
     }
 

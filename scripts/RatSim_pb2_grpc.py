@@ -50,11 +50,6 @@ class LidarServiceStub(object):
                 request_serializer=RatSim__pb2.EmptyRequest.SerializeToString,
                 response_deserializer=RatSim__pb2.LidarDataAndOdom.FromString,
                 _registered_method=True)
-        self.SendPoints = channel.unary_unary(
-                '/RatSim.LidarService/SendPoints',
-                request_serializer=RatSim__pb2.LidarData.SerializeToString,
-                response_deserializer=RatSim__pb2.Status.FromString,
-                _registered_method=True)
 
 
 class LidarServiceServicer(object):
@@ -79,12 +74,6 @@ class LidarServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SendPoints(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_LidarServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -102,11 +91,6 @@ def add_LidarServiceServicer_to_server(servicer, server):
                     servicer.GetLiDARDataAndOdom,
                     request_deserializer=RatSim__pb2.EmptyRequest.FromString,
                     response_serializer=RatSim__pb2.LidarDataAndOdom.SerializeToString,
-            ),
-            'SendPoints': grpc.unary_unary_rpc_method_handler(
-                    servicer.SendPoints,
-                    request_deserializer=RatSim__pb2.LidarData.FromString,
-                    response_serializer=RatSim__pb2.Status.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -201,33 +185,6 @@ class LidarService(object):
             metadata,
             _registered_method=True)
 
-    @staticmethod
-    def SendPoints(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/RatSim.LidarService/SendPoints',
-            RatSim__pb2.LidarData.SerializeToString,
-            RatSim__pb2.Status.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
 
 class MeshServiceStub(object):
     """Missing associated documentation comment in .proto file."""
@@ -289,6 +246,78 @@ class MeshService(object):
             target,
             '/RatSim.MeshService/SendMesh',
             RatSim__pb2.MeshData.SerializeToString,
+            RatSim__pb2.Status.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class PointCloudServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.SendPointCloudWithColor = channel.unary_unary(
+                '/RatSim.PointCloudService/SendPointCloudWithColor',
+                request_serializer=RatSim__pb2.PointCloudWithColor.SerializeToString,
+                response_deserializer=RatSim__pb2.Status.FromString,
+                _registered_method=True)
+
+
+class PointCloudServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def SendPointCloudWithColor(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_PointCloudServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'SendPointCloudWithColor': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendPointCloudWithColor,
+                    request_deserializer=RatSim__pb2.PointCloudWithColor.FromString,
+                    response_serializer=RatSim__pb2.Status.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'RatSim.PointCloudService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('RatSim.PointCloudService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class PointCloudService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def SendPointCloudWithColor(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.PointCloudService/SendPointCloudWithColor',
+            RatSim__pb2.PointCloudWithColor.SerializeToString,
             RatSim__pb2.Status.FromString,
             options,
             channel_credentials,

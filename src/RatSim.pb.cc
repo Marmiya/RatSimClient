@@ -209,6 +209,32 @@ struct DepthCameraImageDataDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DepthCameraImageDataDefaultTypeInternal _DepthCameraImageData_default_instance_;
 
+inline constexpr PointWithColor::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        point_{nullptr},
+        color_{0u} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR PointWithColor::PointWithColor(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PointWithColorDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PointWithColorDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PointWithColorDefaultTypeInternal() {}
+  union {
+    PointWithColor _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PointWithColorDefaultTypeInternal _PointWithColor_default_instance_;
+
 inline constexpr Odometry::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -316,6 +342,31 @@ struct DepthCameraPointDataDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DepthCameraPointDataDefaultTypeInternal _DepthCameraPointData_default_instance_;
 
+inline constexpr PointCloudWithColor::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : data_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR PointCloudWithColor::PointCloudWithColor(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PointCloudWithColorDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PointCloudWithColorDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PointCloudWithColorDefaultTypeInternal() {}
+  union {
+    PointCloudWithColor _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PointCloudWithColorDefaultTypeInternal _PointCloudWithColor_default_instance_;
+
 inline constexpr MeshDataWithOdom::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -386,6 +437,27 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::RatSim::Point, _impl_.x_),
         PROTOBUF_FIELD_OFFSET(::RatSim::Point, _impl_.y_),
         PROTOBUF_FIELD_OFFSET(::RatSim::Point, _impl_.z_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::PointWithColor, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::PointWithColor, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::RatSim::PointWithColor, _impl_.point_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::PointWithColor, _impl_.color_),
+        0,
+        ~0u,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::RatSim::PointCloudWithColor, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::RatSim::PointCloudWithColor, _impl_.data_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::RatSim::EmptyRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -529,21 +601,25 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::RatSim::Point)},
-        {11, -1, -1, sizeof(::RatSim::EmptyRequest)},
-        {19, 29, -1, sizeof(::RatSim::Odometry)},
-        {31, -1, -1, sizeof(::RatSim::Status)},
-        {40, 53, -1, sizeof(::RatSim::MeshData)},
-        {58, 68, -1, sizeof(::RatSim::MeshDataWithOdom)},
-        {70, -1, -1, sizeof(::RatSim::Pose)},
-        {84, -1, -1, sizeof(::RatSim::twist)},
-        {98, -1, -1, sizeof(::RatSim::LidarPoint)},
-        {110, -1, -1, sizeof(::RatSim::LidarData)},
-        {119, 129, -1, sizeof(::RatSim::LidarDataAndOdom)},
-        {131, -1, -1, sizeof(::RatSim::DepthCameraPointData)},
-        {140, -1, -1, sizeof(::RatSim::DepthCameraImageData)},
+        {11, 21, -1, sizeof(::RatSim::PointWithColor)},
+        {23, -1, -1, sizeof(::RatSim::PointCloudWithColor)},
+        {32, -1, -1, sizeof(::RatSim::EmptyRequest)},
+        {40, 50, -1, sizeof(::RatSim::Odometry)},
+        {52, -1, -1, sizeof(::RatSim::Status)},
+        {61, 74, -1, sizeof(::RatSim::MeshData)},
+        {79, 89, -1, sizeof(::RatSim::MeshDataWithOdom)},
+        {91, -1, -1, sizeof(::RatSim::Pose)},
+        {105, -1, -1, sizeof(::RatSim::twist)},
+        {119, -1, -1, sizeof(::RatSim::LidarPoint)},
+        {131, -1, -1, sizeof(::RatSim::LidarData)},
+        {140, 150, -1, sizeof(::RatSim::LidarDataAndOdom)},
+        {152, -1, -1, sizeof(::RatSim::DepthCameraPointData)},
+        {161, -1, -1, sizeof(::RatSim::DepthCameraImageData)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::RatSim::_Point_default_instance_._instance,
+    &::RatSim::_PointWithColor_default_instance_._instance,
+    &::RatSim::_PointCloudWithColor_default_instance_._instance,
     &::RatSim::_EmptyRequest_default_instance_._instance,
     &::RatSim::_Odometry_default_instance_._instance,
     &::RatSim::_Status_default_instance_._instance,
@@ -560,53 +636,57 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_RatSim_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\014RatSim.proto\022\006RatSim\"(\n\005Point\022\t\n\001x\030\001 \001"
-    "(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"\016\n\014EmptyRequest"
-    "\"D\n\010Odometry\022\032\n\004pose\030\001 \001(\0132\014.RatSim.Pose"
-    "\022\034\n\005twist\030\002 \001(\0132\r.RatSim.twist\"\030\n\006Status"
-    "\022\016\n\006status\030\001 \001(\010\"n\n\010MeshData\022\014\n\004data\030\001 \001"
-    "(\014\022\016\n\006format\030\002 \001(\r\022\017\n\007version\030\003 \001(\r\022\022\n\ns"
-    "implified\030\004 \001(\010\022\037\n\ttransform\030\005 \001(\0132\014.Rat"
-    "Sim.Pose\"R\n\020MeshDataWithOdom\022\036\n\004mesh\030\001 \001"
-    "(\0132\020.RatSim.MeshData\022\036\n\004odom\030\002 \001(\0132\020.Rat"
-    "Sim.Odometry\"Q\n\004Pose\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001"
-    "(\002\022\t\n\001z\030\003 \001(\002\022\014\n\004roll\030\004 \001(\002\022\r\n\005pitch\030\005 \001"
-    "(\002\022\013\n\003yaw\030\006 \001(\002\"v\n\005twist\022\020\n\010linear_x\030\001 \001"
-    "(\002\022\020\n\010linear_y\030\002 \001(\002\022\020\n\010linear_z\030\003 \001(\002\022\021"
-    "\n\tangular_x\030\004 \001(\002\022\021\n\tangular_y\030\005 \001(\002\022\021\n\t"
-    "angular_z\030\006 \001(\002\":\n\nLidarPoint\022\t\n\001x\030\001 \001(\002"
-    "\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\013\n\003hit\030\004 \001(\005\"-\n\tL"
-    "idarData\022 \n\004data\030\001 \003(\0132\022.RatSim.LidarPoi"
-    "nt\"S\n\020LidarDataAndOdom\022\037\n\004data\030\001 \001(\0132\021.R"
-    "atSim.LidarData\022\036\n\004odom\030\002 \001(\0132\020.RatSim.O"
-    "dometry\"3\n\024DepthCameraPointData\022\033\n\004data\030"
-    "\001 \003(\0132\r.RatSim.Point\"$\n\024DepthCameraImage"
-    "Data\022\014\n\004data\030\001 \003(\0022\367\001\n\014LidarService\0227\n\014G"
-    "etLiDARData\022\024.RatSim.EmptyRequest\032\021.RatS"
-    "im.LidarData\0226\n\014GetLiDAROdom\022\024.RatSim.Em"
-    "ptyRequest\032\020.RatSim.Odometry\022E\n\023GetLiDAR"
-    "DataAndOdom\022\024.RatSim.EmptyRequest\032\030.RatS"
-    "im.LidarDataAndOdom\022/\n\nSendPoints\022\021.RatS"
-    "im.LidarData\032\016.RatSim.Status2;\n\013MeshServ"
-    "ice\022,\n\010SendMesh\022\020.RatSim.MeshData\032\016.RatS"
-    "im.Status2\360\001\n\022DepthCameraService\022M\n\027GetD"
-    "epthCameraPointData\022\024.RatSim.EmptyReques"
-    "t\032\034.RatSim.DepthCameraPointData\022M\n\027GetDe"
-    "pthCameraImageData\022\024.RatSim.EmptyRequest"
-    "\032\034.RatSim.DepthCameraImageData\022<\n\022GetDep"
-    "thCameraOdom\022\024.RatSim.EmptyRequest\032\020.Rat"
-    "Sim.Odometryb\006proto3"
+    "(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"=\n\016PointWithCol"
+    "or\022\034\n\005point\030\001 \001(\0132\r.RatSim.Point\022\r\n\005colo"
+    "r\030\002 \001(\r\";\n\023PointCloudWithColor\022$\n\004data\030\001"
+    " \003(\0132\026.RatSim.PointWithColor\"\016\n\014EmptyReq"
+    "uest\"D\n\010Odometry\022\032\n\004pose\030\001 \001(\0132\014.RatSim."
+    "Pose\022\034\n\005twist\030\002 \001(\0132\r.RatSim.twist\"\030\n\006St"
+    "atus\022\016\n\006status\030\001 \001(\010\"n\n\010MeshData\022\014\n\004data"
+    "\030\001 \001(\014\022\016\n\006format\030\002 \001(\r\022\017\n\007version\030\003 \001(\r\022"
+    "\022\n\nsimplified\030\004 \001(\010\022\037\n\ttransform\030\005 \001(\0132\014"
+    ".RatSim.Pose\"R\n\020MeshDataWithOdom\022\036\n\004mesh"
+    "\030\001 \001(\0132\020.RatSim.MeshData\022\036\n\004odom\030\002 \001(\0132\020"
+    ".RatSim.Odometry\"Q\n\004Pose\022\t\n\001x\030\001 \001(\002\022\t\n\001y"
+    "\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\014\n\004roll\030\004 \001(\002\022\r\n\005pitch"
+    "\030\005 \001(\002\022\013\n\003yaw\030\006 \001(\002\"v\n\005twist\022\020\n\010linear_x"
+    "\030\001 \001(\002\022\020\n\010linear_y\030\002 \001(\002\022\020\n\010linear_z\030\003 \001"
+    "(\002\022\021\n\tangular_x\030\004 \001(\002\022\021\n\tangular_y\030\005 \001(\002"
+    "\022\021\n\tangular_z\030\006 \001(\002\":\n\nLidarPoint\022\t\n\001x\030\001"
+    " \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\013\n\003hit\030\004 \001(\005\""
+    "-\n\tLidarData\022 \n\004data\030\001 \003(\0132\022.RatSim.Lida"
+    "rPoint\"S\n\020LidarDataAndOdom\022\037\n\004data\030\001 \001(\013"
+    "2\021.RatSim.LidarData\022\036\n\004odom\030\002 \001(\0132\020.RatS"
+    "im.Odometry\"3\n\024DepthCameraPointData\022\033\n\004d"
+    "ata\030\001 \003(\0132\r.RatSim.Point\"$\n\024DepthCameraI"
+    "mageData\022\014\n\004data\030\001 \003(\0022\306\001\n\014LidarService\022"
+    "7\n\014GetLiDARData\022\024.RatSim.EmptyRequest\032\021."
+    "RatSim.LidarData\0226\n\014GetLiDAROdom\022\024.RatSi"
+    "m.EmptyRequest\032\020.RatSim.Odometry\022E\n\023GetL"
+    "iDARDataAndOdom\022\024.RatSim.EmptyRequest\032\030."
+    "RatSim.LidarDataAndOdom2;\n\013MeshService\022,"
+    "\n\010SendMesh\022\020.RatSim.MeshData\032\016.RatSim.St"
+    "atus2[\n\021PointCloudService\022F\n\027SendPointCl"
+    "oudWithColor\022\033.RatSim.PointCloudWithColo"
+    "r\032\016.RatSim.Status2\360\001\n\022DepthCameraService"
+    "\022M\n\027GetDepthCameraPointData\022\024.RatSim.Emp"
+    "tyRequest\032\034.RatSim.DepthCameraPointData\022"
+    "M\n\027GetDepthCameraImageData\022\024.RatSim.Empt"
+    "yRequest\032\034.RatSim.DepthCameraImageData\022<"
+    "\n\022GetDepthCameraOdom\022\024.RatSim.EmptyReque"
+    "st\032\020.RatSim.Odometryb\006proto3"
 };
 static ::absl::once_flag descriptor_table_RatSim_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_RatSim_2eproto = {
     false,
     false,
-    1420,
+    1588,
     descriptor_table_protodef_RatSim_2eproto,
     "RatSim.proto",
     &descriptor_table_RatSim_2eproto_once,
     nullptr,
     0,
-    13,
+    15,
     schemas,
     file_default_instances,
     TableStruct_RatSim_2eproto::offsets,
@@ -872,6 +952,534 @@ void Point::InternalSwap(Point* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata Point::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class PointWithColor::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<PointWithColor>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_._has_bits_);
+};
+
+PointWithColor::PointWithColor(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RatSim.PointWithColor)
+}
+inline PROTOBUF_NDEBUG_INLINE PointWithColor::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::RatSim::PointWithColor& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+PointWithColor::PointWithColor(
+    ::google::protobuf::Arena* arena,
+    const PointWithColor& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  PointWithColor* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.point_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::RatSim::Point>(
+                              arena, *from._impl_.point_)
+                        : nullptr;
+  _impl_.color_ = from._impl_.color_;
+
+  // @@protoc_insertion_point(copy_constructor:RatSim.PointWithColor)
+}
+inline PROTOBUF_NDEBUG_INLINE PointWithColor::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void PointWithColor::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, point_),
+           0,
+           offsetof(Impl_, color_) -
+               offsetof(Impl_, point_) +
+               sizeof(Impl_::color_));
+}
+PointWithColor::~PointWithColor() {
+  // @@protoc_insertion_point(destructor:RatSim.PointWithColor)
+  SharedDtor(*this);
+}
+inline void PointWithColor::SharedDtor(MessageLite& self) {
+  PointWithColor& this_ = static_cast<PointWithColor&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.point_;
+  this_._impl_.~Impl_();
+}
+
+inline void* PointWithColor::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) PointWithColor(arena);
+}
+constexpr auto PointWithColor::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(PointWithColor),
+                                            alignof(PointWithColor));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull PointWithColor::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_PointWithColor_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &PointWithColor::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<PointWithColor>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &PointWithColor::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<PointWithColor>(), &PointWithColor::ByteSizeLong,
+            &PointWithColor::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_._cached_size_),
+        false,
+    },
+    &PointWithColor::kDescriptorMethods,
+    &descriptor_table_RatSim_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* PointWithColor::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> PointWithColor::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::RatSim::PointWithColor>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint32 color = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(PointWithColor, _impl_.color_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_.color_)}},
+    // .RatSim.Point point = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_.point_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .RatSim.Point point = 1;
+    {PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_.point_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // uint32 color = 2;
+    {PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_.color_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::RatSim::Point>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void PointWithColor::Clear() {
+// @@protoc_insertion_point(message_clear_start:RatSim.PointWithColor)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.point_ != nullptr);
+    _impl_.point_->Clear();
+  }
+  _impl_.color_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* PointWithColor::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const PointWithColor& this_ = static_cast<const PointWithColor&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* PointWithColor::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const PointWithColor& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:RatSim.PointWithColor)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .RatSim.Point point = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.point_, this_._impl_.point_->GetCachedSize(), target,
+                stream);
+          }
+
+          // uint32 color = 2;
+          if (this_._internal_color() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_color(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:RatSim.PointWithColor)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t PointWithColor::ByteSizeLong(const MessageLite& base) {
+          const PointWithColor& this_ = static_cast<const PointWithColor&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t PointWithColor::ByteSizeLong() const {
+          const PointWithColor& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:RatSim.PointWithColor)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // .RatSim.Point point = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.point_);
+            }
+          }
+           {
+            // uint32 color = 2;
+            if (this_._internal_color() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_color());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void PointWithColor::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<PointWithColor*>(&to_msg);
+  auto& from = static_cast<const PointWithColor&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:RatSim.PointWithColor)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.point_ != nullptr);
+    if (_this->_impl_.point_ == nullptr) {
+      _this->_impl_.point_ =
+          ::google::protobuf::Message::CopyConstruct<::RatSim::Point>(arena, *from._impl_.point_);
+    } else {
+      _this->_impl_.point_->MergeFrom(*from._impl_.point_);
+    }
+  }
+  if (from._internal_color() != 0) {
+    _this->_impl_.color_ = from._impl_.color_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PointWithColor::CopyFrom(const PointWithColor& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:RatSim.PointWithColor)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void PointWithColor::InternalSwap(PointWithColor* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_.color_)
+      + sizeof(PointWithColor::_impl_.color_)
+      - PROTOBUF_FIELD_OFFSET(PointWithColor, _impl_.point_)>(
+          reinterpret_cast<char*>(&_impl_.point_),
+          reinterpret_cast<char*>(&other->_impl_.point_));
+}
+
+::google::protobuf::Metadata PointWithColor::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class PointCloudWithColor::_Internal {
+ public:
+};
+
+PointCloudWithColor::PointCloudWithColor(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RatSim.PointCloudWithColor)
+}
+inline PROTOBUF_NDEBUG_INLINE PointCloudWithColor::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::RatSim::PointCloudWithColor& from_msg)
+      : data_{visibility, arena, from.data_},
+        _cached_size_{0} {}
+
+PointCloudWithColor::PointCloudWithColor(
+    ::google::protobuf::Arena* arena,
+    const PointCloudWithColor& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  PointCloudWithColor* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:RatSim.PointCloudWithColor)
+}
+inline PROTOBUF_NDEBUG_INLINE PointCloudWithColor::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : data_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void PointCloudWithColor::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+PointCloudWithColor::~PointCloudWithColor() {
+  // @@protoc_insertion_point(destructor:RatSim.PointCloudWithColor)
+  SharedDtor(*this);
+}
+inline void PointCloudWithColor::SharedDtor(MessageLite& self) {
+  PointCloudWithColor& this_ = static_cast<PointCloudWithColor&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PointCloudWithColor::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) PointCloudWithColor(arena);
+}
+constexpr auto PointCloudWithColor::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(PointCloudWithColor, _impl_.data_) +
+          decltype(PointCloudWithColor::_impl_.data_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(PointCloudWithColor), alignof(PointCloudWithColor), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&PointCloudWithColor::PlacementNew_,
+                                 sizeof(PointCloudWithColor),
+                                 alignof(PointCloudWithColor));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull PointCloudWithColor::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_PointCloudWithColor_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &PointCloudWithColor::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<PointCloudWithColor>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &PointCloudWithColor::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<PointCloudWithColor>(), &PointCloudWithColor::ByteSizeLong,
+            &PointCloudWithColor::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(PointCloudWithColor, _impl_._cached_size_),
+        false,
+    },
+    &PointCloudWithColor::kDescriptorMethods,
+    &descriptor_table_RatSim_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* PointCloudWithColor::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> PointCloudWithColor::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::RatSim::PointCloudWithColor>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .RatSim.PointWithColor data = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(PointCloudWithColor, _impl_.data_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .RatSim.PointWithColor data = 1;
+    {PROTOBUF_FIELD_OFFSET(PointCloudWithColor, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::RatSim::PointWithColor>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void PointCloudWithColor::Clear() {
+// @@protoc_insertion_point(message_clear_start:RatSim.PointCloudWithColor)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.data_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* PointCloudWithColor::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const PointCloudWithColor& this_ = static_cast<const PointCloudWithColor&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* PointCloudWithColor::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const PointCloudWithColor& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:RatSim.PointCloudWithColor)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .RatSim.PointWithColor data = 1;
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_data_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_data().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:RatSim.PointCloudWithColor)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t PointCloudWithColor::ByteSizeLong(const MessageLite& base) {
+          const PointCloudWithColor& this_ = static_cast<const PointCloudWithColor&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t PointCloudWithColor::ByteSizeLong() const {
+          const PointCloudWithColor& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:RatSim.PointCloudWithColor)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .RatSim.PointWithColor data = 1;
+            {
+              total_size += 1UL * this_._internal_data_size();
+              for (const auto& msg : this_._internal_data()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void PointCloudWithColor::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<PointCloudWithColor*>(&to_msg);
+  auto& from = static_cast<const PointCloudWithColor&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:RatSim.PointCloudWithColor)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_data()->MergeFrom(
+      from._internal_data());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PointCloudWithColor::CopyFrom(const PointCloudWithColor& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:RatSim.PointCloudWithColor)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void PointCloudWithColor::InternalSwap(PointCloudWithColor* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.data_.InternalSwap(&other->_impl_.data_);
+}
+
+::google::protobuf::Metadata PointCloudWithColor::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

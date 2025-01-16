@@ -83,6 +83,12 @@ extern OdometryDefaultTypeInternal _Odometry_default_instance_;
 class Point;
 struct PointDefaultTypeInternal;
 extern PointDefaultTypeInternal _Point_default_instance_;
+class PointCloudWithColor;
+struct PointCloudWithColorDefaultTypeInternal;
+extern PointCloudWithColorDefaultTypeInternal _PointCloudWithColor_default_instance_;
+class PointWithColor;
+struct PointWithColorDefaultTypeInternal;
+extern PointWithColorDefaultTypeInternal _PointWithColor_default_instance_;
 class Pose;
 struct PoseDefaultTypeInternal;
 extern PoseDefaultTypeInternal _Pose_default_instance_;
@@ -165,7 +171,7 @@ class twist final
     return reinterpret_cast<const twist*>(
         &_twist_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(twist& a, twist& b) { a.Swap(&b); }
   inline void Swap(twist* other) {
     if (other == this) return;
@@ -416,7 +422,7 @@ class Status final
     return reinterpret_cast<const Status*>(
         &_Status_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(Status& a, Status& b) { a.Swap(&b); }
   inline void Swap(Status* other) {
     if (other == this) return;
@@ -607,7 +613,7 @@ class Pose final
     return reinterpret_cast<const Pose*>(
         &_Pose_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(Pose& a, Pose& b) { a.Swap(&b); }
   inline void Swap(Pose* other) {
     if (other == this) return;
@@ -1073,7 +1079,7 @@ class LidarPoint final
     return reinterpret_cast<const LidarPoint*>(
         &_LidarPoint_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(LidarPoint& a, LidarPoint& b) { a.Swap(&b); }
   inline void Swap(LidarPoint* other) {
     if (other == this) return;
@@ -1299,7 +1305,7 @@ class EmptyRequest final
     return reinterpret_cast<const EmptyRequest*>(
         &_EmptyRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 1;
+  static constexpr int kIndexInFileMessages = 3;
   friend void swap(EmptyRequest& a, EmptyRequest& b) { a.Swap(&b); }
   inline void Swap(EmptyRequest* other) {
     if (other == this) return;
@@ -1446,7 +1452,7 @@ class DepthCameraImageData final
     return reinterpret_cast<const DepthCameraImageData*>(
         &_DepthCameraImageData_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(DepthCameraImageData& a, DepthCameraImageData& b) { a.Swap(&b); }
   inline void Swap(DepthCameraImageData* other) {
     if (other == this) return;
@@ -1585,6 +1591,215 @@ class DepthCameraImageData final
 };
 // -------------------------------------------------------------------
 
+class PointWithColor final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:RatSim.PointWithColor) */ {
+ public:
+  inline PointWithColor() : PointWithColor(nullptr) {}
+  ~PointWithColor() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(PointWithColor* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(PointWithColor));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR PointWithColor(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline PointWithColor(const PointWithColor& from) : PointWithColor(nullptr, from) {}
+  inline PointWithColor(PointWithColor&& from) noexcept
+      : PointWithColor(nullptr, std::move(from)) {}
+  inline PointWithColor& operator=(const PointWithColor& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PointWithColor& operator=(PointWithColor&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PointWithColor& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PointWithColor* internal_default_instance() {
+    return reinterpret_cast<const PointWithColor*>(
+        &_PointWithColor_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 1;
+  friend void swap(PointWithColor& a, PointWithColor& b) { a.Swap(&b); }
+  inline void Swap(PointWithColor* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PointWithColor* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PointWithColor* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<PointWithColor>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const PointWithColor& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const PointWithColor& from) { PointWithColor::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(PointWithColor* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "RatSim.PointWithColor"; }
+
+ protected:
+  explicit PointWithColor(::google::protobuf::Arena* arena);
+  PointWithColor(::google::protobuf::Arena* arena, const PointWithColor& from);
+  PointWithColor(::google::protobuf::Arena* arena, PointWithColor&& from) noexcept
+      : PointWithColor(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kPointFieldNumber = 1,
+    kColorFieldNumber = 2,
+  };
+  // .RatSim.Point point = 1;
+  bool has_point() const;
+  void clear_point() ;
+  const ::RatSim::Point& point() const;
+  PROTOBUF_NODISCARD ::RatSim::Point* release_point();
+  ::RatSim::Point* mutable_point();
+  void set_allocated_point(::RatSim::Point* value);
+  void unsafe_arena_set_allocated_point(::RatSim::Point* value);
+  ::RatSim::Point* unsafe_arena_release_point();
+
+  private:
+  const ::RatSim::Point& _internal_point() const;
+  ::RatSim::Point* _internal_mutable_point();
+
+  public:
+  // uint32 color = 2;
+  void clear_color() ;
+  ::uint32_t color() const;
+  void set_color(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_color() const;
+  void _internal_set_color(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:RatSim.PointWithColor)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const PointWithColor& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::RatSim::Point* point_;
+    ::uint32_t color_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_RatSim_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Odometry final
     : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:RatSim.Odometry) */ {
@@ -1645,7 +1860,7 @@ class Odometry final
     return reinterpret_cast<const Odometry*>(
         &_Odometry_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 2;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(Odometry& a, Odometry& b) { a.Swap(&b); }
   inline void Swap(Odometry* other) {
     if (other == this) return;
@@ -1859,7 +2074,7 @@ class MeshData final
     return reinterpret_cast<const MeshData*>(
         &_MeshData_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 6;
   friend void swap(MeshData& a, MeshData& b) { a.Swap(&b); }
   inline void Swap(MeshData* other) {
     if (other == this) return;
@@ -2110,7 +2325,7 @@ class LidarData final
     return reinterpret_cast<const LidarData*>(
         &_LidarData_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(LidarData& a, LidarData& b) { a.Swap(&b); }
   inline void Swap(LidarData* other) {
     if (other == this) return;
@@ -2308,7 +2523,7 @@ class DepthCameraPointData final
     return reinterpret_cast<const DepthCameraPointData*>(
         &_DepthCameraPointData_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(DepthCameraPointData& a, DepthCameraPointData& b) { a.Swap(&b); }
   inline void Swap(DepthCameraPointData* other) {
     if (other == this) return;
@@ -2446,6 +2661,204 @@ class DepthCameraPointData final
 };
 // -------------------------------------------------------------------
 
+class PointCloudWithColor final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:RatSim.PointCloudWithColor) */ {
+ public:
+  inline PointCloudWithColor() : PointCloudWithColor(nullptr) {}
+  ~PointCloudWithColor() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(PointCloudWithColor* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(PointCloudWithColor));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR PointCloudWithColor(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline PointCloudWithColor(const PointCloudWithColor& from) : PointCloudWithColor(nullptr, from) {}
+  inline PointCloudWithColor(PointCloudWithColor&& from) noexcept
+      : PointCloudWithColor(nullptr, std::move(from)) {}
+  inline PointCloudWithColor& operator=(const PointCloudWithColor& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PointCloudWithColor& operator=(PointCloudWithColor&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PointCloudWithColor& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PointCloudWithColor* internal_default_instance() {
+    return reinterpret_cast<const PointCloudWithColor*>(
+        &_PointCloudWithColor_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 2;
+  friend void swap(PointCloudWithColor& a, PointCloudWithColor& b) { a.Swap(&b); }
+  inline void Swap(PointCloudWithColor* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PointCloudWithColor* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PointCloudWithColor* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<PointCloudWithColor>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const PointCloudWithColor& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const PointCloudWithColor& from) { PointCloudWithColor::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(PointCloudWithColor* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "RatSim.PointCloudWithColor"; }
+
+ protected:
+  explicit PointCloudWithColor(::google::protobuf::Arena* arena);
+  PointCloudWithColor(::google::protobuf::Arena* arena, const PointCloudWithColor& from);
+  PointCloudWithColor(::google::protobuf::Arena* arena, PointCloudWithColor&& from) noexcept
+      : PointCloudWithColor(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDataFieldNumber = 1,
+  };
+  // repeated .RatSim.PointWithColor data = 1;
+  int data_size() const;
+  private:
+  int _internal_data_size() const;
+
+  public:
+  void clear_data() ;
+  ::RatSim::PointWithColor* mutable_data(int index);
+  ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>* mutable_data();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>& _internal_data() const;
+  ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>* _internal_mutable_data();
+  public:
+  const ::RatSim::PointWithColor& data(int index) const;
+  ::RatSim::PointWithColor* add_data();
+  const ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>& data() const;
+  // @@protoc_insertion_point(class_scope:RatSim.PointCloudWithColor)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const PointCloudWithColor& from_msg);
+    ::google::protobuf::RepeatedPtrField< ::RatSim::PointWithColor > data_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_RatSim_2eproto;
+};
+// -------------------------------------------------------------------
+
 class MeshDataWithOdom final
     : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:RatSim.MeshDataWithOdom) */ {
@@ -2506,7 +2919,7 @@ class MeshDataWithOdom final
     return reinterpret_cast<const MeshDataWithOdom*>(
         &_MeshDataWithOdom_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(MeshDataWithOdom& a, MeshDataWithOdom& b) { a.Swap(&b); }
   inline void Swap(MeshDataWithOdom* other) {
     if (other == this) return;
@@ -2720,7 +3133,7 @@ class LidarDataAndOdom final
     return reinterpret_cast<const LidarDataAndOdom*>(
         &_LidarDataAndOdom_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(LidarDataAndOdom& a, LidarDataAndOdom& b) { a.Swap(&b); }
   inline void Swap(LidarDataAndOdom* other) {
     if (other == this) return;
@@ -2953,6 +3366,181 @@ inline float Point::_internal_z() const {
 inline void Point::_internal_set_z(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.z_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// PointWithColor
+
+// .RatSim.Point point = 1;
+inline bool PointWithColor::has_point() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.point_ != nullptr);
+  return value;
+}
+inline void PointWithColor::clear_point() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.point_ != nullptr) _impl_.point_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::RatSim::Point& PointWithColor::_internal_point() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::RatSim::Point* p = _impl_.point_;
+  return p != nullptr ? *p : reinterpret_cast<const ::RatSim::Point&>(::RatSim::_Point_default_instance_);
+}
+inline const ::RatSim::Point& PointWithColor::point() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:RatSim.PointWithColor.point)
+  return _internal_point();
+}
+inline void PointWithColor::unsafe_arena_set_allocated_point(::RatSim::Point* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.point_);
+  }
+  _impl_.point_ = reinterpret_cast<::RatSim::Point*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:RatSim.PointWithColor.point)
+}
+inline ::RatSim::Point* PointWithColor::release_point() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::RatSim::Point* released = _impl_.point_;
+  _impl_.point_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::RatSim::Point* PointWithColor::unsafe_arena_release_point() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:RatSim.PointWithColor.point)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::RatSim::Point* temp = _impl_.point_;
+  _impl_.point_ = nullptr;
+  return temp;
+}
+inline ::RatSim::Point* PointWithColor::_internal_mutable_point() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.point_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::RatSim::Point>(GetArena());
+    _impl_.point_ = reinterpret_cast<::RatSim::Point*>(p);
+  }
+  return _impl_.point_;
+}
+inline ::RatSim::Point* PointWithColor::mutable_point() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::RatSim::Point* _msg = _internal_mutable_point();
+  // @@protoc_insertion_point(field_mutable:RatSim.PointWithColor.point)
+  return _msg;
+}
+inline void PointWithColor::set_allocated_point(::RatSim::Point* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.point_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.point_ = reinterpret_cast<::RatSim::Point*>(value);
+  // @@protoc_insertion_point(field_set_allocated:RatSim.PointWithColor.point)
+}
+
+// uint32 color = 2;
+inline void PointWithColor::clear_color() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.color_ = 0u;
+}
+inline ::uint32_t PointWithColor::color() const {
+  // @@protoc_insertion_point(field_get:RatSim.PointWithColor.color)
+  return _internal_color();
+}
+inline void PointWithColor::set_color(::uint32_t value) {
+  _internal_set_color(value);
+  // @@protoc_insertion_point(field_set:RatSim.PointWithColor.color)
+}
+inline ::uint32_t PointWithColor::_internal_color() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.color_;
+}
+inline void PointWithColor::_internal_set_color(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.color_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// PointCloudWithColor
+
+// repeated .RatSim.PointWithColor data = 1;
+inline int PointCloudWithColor::_internal_data_size() const {
+  return _internal_data().size();
+}
+inline int PointCloudWithColor::data_size() const {
+  return _internal_data_size();
+}
+inline void PointCloudWithColor::clear_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.Clear();
+}
+inline ::RatSim::PointWithColor* PointCloudWithColor::mutable_data(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:RatSim.PointCloudWithColor.data)
+  return _internal_mutable_data()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>* PointCloudWithColor::mutable_data()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:RatSim.PointCloudWithColor.data)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_data();
+}
+inline const ::RatSim::PointWithColor& PointCloudWithColor::data(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:RatSim.PointCloudWithColor.data)
+  return _internal_data().Get(index);
+}
+inline ::RatSim::PointWithColor* PointCloudWithColor::add_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::RatSim::PointWithColor* _add = _internal_mutable_data()->Add();
+  // @@protoc_insertion_point(field_add:RatSim.PointCloudWithColor.data)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>& PointCloudWithColor::data() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:RatSim.PointCloudWithColor.data)
+  return _internal_data();
+}
+inline const ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>&
+PointCloudWithColor::_internal_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.data_;
+}
+inline ::google::protobuf::RepeatedPtrField<::RatSim::PointWithColor>*
+PointCloudWithColor::_internal_mutable_data() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.data_;
 }
 
 // -------------------------------------------------------------------

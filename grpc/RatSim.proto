@@ -11,6 +11,15 @@ message Point {
   float z = 3;
 }
 
+message PointWithColor {
+  Point point = 1;
+  uint32 color = 2;
+}
+
+message PointCloudWithColor {
+  repeated PointWithColor data = 1;
+}
+
 message EmptyRequest {
 }
 
@@ -86,11 +95,14 @@ service LidarService {
   rpc GetLiDARData (EmptyRequest) returns (LidarData);
   rpc GetLiDAROdom (EmptyRequest) returns (Odometry);
   rpc GetLiDARDataAndOdom (EmptyRequest) returns (LidarDataAndOdom);
-  rpc SendPoints (LidarData) returns (Status);
 }
 
 service MeshService {
   rpc SendMesh (MeshData) returns (Status);
+}
+
+service PointCloudService {
+  rpc SendPointCloudWithColor (PointCloudWithColor) returns (Status);
 }
 
 service DepthCameraService {
