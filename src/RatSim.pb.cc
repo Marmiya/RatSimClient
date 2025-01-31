@@ -81,6 +81,33 @@ struct StatusDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StatusDefaultTypeInternal _Status_default_instance_;
 
+inline constexpr RobotName::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RobotName::RobotName(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RobotNameDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RobotNameDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RobotNameDefaultTypeInternal() {}
+  union {
+    RobotName _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RobotNameDefaultTypeInternal _RobotName_default_instance_;
+
 inline constexpr Pose::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : x_{0},
@@ -487,6 +514,15 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::RatSim::Status, _impl_.status_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::RatSim::RobotName, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::RatSim::RobotName, _impl_.name_),
         PROTOBUF_FIELD_OFFSET(::RatSim::MeshData, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::RatSim::MeshData, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -606,15 +642,16 @@ static const ::_pbi::MigrationSchema
         {32, -1, -1, sizeof(::RatSim::EmptyRequest)},
         {40, 50, -1, sizeof(::RatSim::Odometry)},
         {52, -1, -1, sizeof(::RatSim::Status)},
-        {61, 74, -1, sizeof(::RatSim::MeshData)},
-        {79, 89, -1, sizeof(::RatSim::MeshDataWithOdom)},
-        {91, -1, -1, sizeof(::RatSim::Pose)},
-        {105, -1, -1, sizeof(::RatSim::twist)},
-        {119, -1, -1, sizeof(::RatSim::LidarPoint)},
-        {131, -1, -1, sizeof(::RatSim::LidarData)},
-        {140, 150, -1, sizeof(::RatSim::LidarDataAndOdom)},
-        {152, -1, -1, sizeof(::RatSim::DepthCameraPointData)},
-        {161, -1, -1, sizeof(::RatSim::DepthCameraImageData)},
+        {61, -1, -1, sizeof(::RatSim::RobotName)},
+        {70, 83, -1, sizeof(::RatSim::MeshData)},
+        {88, 98, -1, sizeof(::RatSim::MeshDataWithOdom)},
+        {100, -1, -1, sizeof(::RatSim::Pose)},
+        {114, -1, -1, sizeof(::RatSim::twist)},
+        {128, -1, -1, sizeof(::RatSim::LidarPoint)},
+        {140, -1, -1, sizeof(::RatSim::LidarData)},
+        {149, 159, -1, sizeof(::RatSim::LidarDataAndOdom)},
+        {161, -1, -1, sizeof(::RatSim::DepthCameraPointData)},
+        {170, -1, -1, sizeof(::RatSim::DepthCameraImageData)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::RatSim::_Point_default_instance_._instance,
@@ -623,6 +660,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::RatSim::_EmptyRequest_default_instance_._instance,
     &::RatSim::_Odometry_default_instance_._instance,
     &::RatSim::_Status_default_instance_._instance,
+    &::RatSim::_RobotName_default_instance_._instance,
     &::RatSim::_MeshData_default_instance_._instance,
     &::RatSim::_MeshDataWithOdom_default_instance_._instance,
     &::RatSim::_Pose_default_instance_._instance,
@@ -642,51 +680,52 @@ const char descriptor_table_protodef_RatSim_2eproto[] ABSL_ATTRIBUTE_SECTION_VAR
     " \003(\0132\026.RatSim.PointWithColor\"\016\n\014EmptyReq"
     "uest\"D\n\010Odometry\022\032\n\004pose\030\001 \001(\0132\014.RatSim."
     "Pose\022\034\n\005twist\030\002 \001(\0132\r.RatSim.twist\"\030\n\006St"
-    "atus\022\016\n\006status\030\001 \001(\010\"n\n\010MeshData\022\014\n\004data"
-    "\030\001 \001(\014\022\016\n\006format\030\002 \001(\r\022\017\n\007version\030\003 \001(\r\022"
-    "\022\n\nsimplified\030\004 \001(\010\022\037\n\ttransform\030\005 \001(\0132\014"
-    ".RatSim.Pose\"R\n\020MeshDataWithOdom\022\036\n\004mesh"
-    "\030\001 \001(\0132\020.RatSim.MeshData\022\036\n\004odom\030\002 \001(\0132\020"
-    ".RatSim.Odometry\"Q\n\004Pose\022\t\n\001x\030\001 \001(\002\022\t\n\001y"
-    "\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\014\n\004roll\030\004 \001(\002\022\r\n\005pitch"
-    "\030\005 \001(\002\022\013\n\003yaw\030\006 \001(\002\"v\n\005twist\022\020\n\010linear_x"
-    "\030\001 \001(\002\022\020\n\010linear_y\030\002 \001(\002\022\020\n\010linear_z\030\003 \001"
-    "(\002\022\021\n\tangular_x\030\004 \001(\002\022\021\n\tangular_y\030\005 \001(\002"
-    "\022\021\n\tangular_z\030\006 \001(\002\":\n\nLidarPoint\022\t\n\001x\030\001"
-    " \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\013\n\003hit\030\004 \001(\005\""
-    "-\n\tLidarData\022 \n\004data\030\001 \003(\0132\022.RatSim.Lida"
-    "rPoint\"S\n\020LidarDataAndOdom\022\037\n\004data\030\001 \001(\013"
-    "2\021.RatSim.LidarData\022\036\n\004odom\030\002 \001(\0132\020.RatS"
-    "im.Odometry\"3\n\024DepthCameraPointData\022\033\n\004d"
-    "ata\030\001 \003(\0132\r.RatSim.Point\"$\n\024DepthCameraI"
-    "mageData\022\014\n\004data\030\001 \003(\0022\306\001\n\014LidarService\022"
-    "7\n\014GetLiDARData\022\024.RatSim.EmptyRequest\032\021."
-    "RatSim.LidarData\0226\n\014GetLiDAROdom\022\024.RatSi"
-    "m.EmptyRequest\032\020.RatSim.Odometry\022E\n\023GetL"
-    "iDARDataAndOdom\022\024.RatSim.EmptyRequest\032\030."
-    "RatSim.LidarDataAndOdom2;\n\013MeshService\022,"
-    "\n\010SendMesh\022\020.RatSim.MeshData\032\016.RatSim.St"
-    "atus2[\n\021PointCloudService\022F\n\027SendPointCl"
-    "oudWithColor\022\033.RatSim.PointCloudWithColo"
-    "r\032\016.RatSim.Status2\360\001\n\022DepthCameraService"
-    "\022M\n\027GetDepthCameraPointData\022\024.RatSim.Emp"
-    "tyRequest\032\034.RatSim.DepthCameraPointData\022"
-    "M\n\027GetDepthCameraImageData\022\024.RatSim.Empt"
-    "yRequest\032\034.RatSim.DepthCameraImageData\022<"
-    "\n\022GetDepthCameraOdom\022\024.RatSim.EmptyReque"
-    "st\032\020.RatSim.Odometryb\006proto3"
+    "atus\022\016\n\006status\030\001 \001(\010\"\031\n\tRobotName\022\014\n\004nam"
+    "e\030\001 \001(\t\"n\n\010MeshData\022\014\n\004data\030\001 \001(\014\022\016\n\006for"
+    "mat\030\002 \001(\r\022\017\n\007version\030\003 \001(\r\022\022\n\nsimplified"
+    "\030\004 \001(\010\022\037\n\ttransform\030\005 \001(\0132\014.RatSim.Pose\""
+    "R\n\020MeshDataWithOdom\022\036\n\004mesh\030\001 \001(\0132\020.RatS"
+    "im.MeshData\022\036\n\004odom\030\002 \001(\0132\020.RatSim.Odome"
+    "try\"Q\n\004Pose\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003"
+    " \001(\002\022\014\n\004roll\030\004 \001(\002\022\r\n\005pitch\030\005 \001(\002\022\013\n\003yaw"
+    "\030\006 \001(\002\"v\n\005twist\022\020\n\010linear_x\030\001 \001(\002\022\020\n\010lin"
+    "ear_y\030\002 \001(\002\022\020\n\010linear_z\030\003 \001(\002\022\021\n\tangular"
+    "_x\030\004 \001(\002\022\021\n\tangular_y\030\005 \001(\002\022\021\n\tangular_z"
+    "\030\006 \001(\002\":\n\nLidarPoint\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001"
+    "(\002\022\t\n\001z\030\003 \001(\002\022\013\n\003hit\030\004 \001(\005\"-\n\tLidarData\022"
+    " \n\004data\030\001 \003(\0132\022.RatSim.LidarPoint\"S\n\020Lid"
+    "arDataAndOdom\022\037\n\004data\030\001 \001(\0132\021.RatSim.Lid"
+    "arData\022\036\n\004odom\030\002 \001(\0132\020.RatSim.Odometry\"3"
+    "\n\024DepthCameraPointData\022\033\n\004data\030\001 \003(\0132\r.R"
+    "atSim.Point\"$\n\024DepthCameraImageData\022\014\n\004d"
+    "ata\030\001 \003(\0022\275\001\n\014LidarService\0224\n\014GetLiDARDa"
+    "ta\022\021.RatSim.RobotName\032\021.RatSim.LidarData"
+    "\0223\n\014GetLiDAROdom\022\021.RatSim.RobotName\032\020.Ra"
+    "tSim.Odometry\022B\n\023GetLiDARDataAndOdom\022\021.R"
+    "atSim.RobotName\032\030.RatSim.LidarDataAndOdo"
+    "m2;\n\013MeshService\022,\n\010SendMesh\022\020.RatSim.Me"
+    "shData\032\016.RatSim.Status2[\n\021PointCloudServ"
+    "ice\022F\n\027SendPointCloudWithColor\022\033.RatSim."
+    "PointCloudWithColor\032\016.RatSim.Status2\360\001\n\022"
+    "DepthCameraService\022M\n\027GetDepthCameraPoin"
+    "tData\022\024.RatSim.EmptyRequest\032\034.RatSim.Dep"
+    "thCameraPointData\022M\n\027GetDepthCameraImage"
+    "Data\022\024.RatSim.EmptyRequest\032\034.RatSim.Dept"
+    "hCameraImageData\022<\n\022GetDepthCameraOdom\022\024"
+    ".RatSim.EmptyRequest\032\020.RatSim.Odometryb\006"
+    "proto3"
 };
 static ::absl::once_flag descriptor_table_RatSim_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_RatSim_2eproto = {
     false,
     false,
-    1588,
+    1606,
     descriptor_table_protodef_RatSim_2eproto,
     "RatSim.proto",
     &descriptor_table_RatSim_2eproto_once,
     nullptr,
     0,
-    15,
+    16,
     schemas,
     file_default_instances,
     TableStruct_RatSim_2eproto::offsets,
@@ -2090,6 +2129,237 @@ void Status::InternalSwap(Status* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata Status::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RobotName::_Internal {
+ public:
+};
+
+RobotName::RobotName(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RatSim.RobotName)
+}
+inline PROTOBUF_NDEBUG_INLINE RobotName::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::RatSim::RobotName& from_msg)
+      : name_(arena, from.name_),
+        _cached_size_{0} {}
+
+RobotName::RobotName(
+    ::google::protobuf::Arena* arena,
+    const RobotName& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RobotName* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:RatSim.RobotName)
+}
+inline PROTOBUF_NDEBUG_INLINE RobotName::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        _cached_size_{0} {}
+
+inline void RobotName::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+RobotName::~RobotName() {
+  // @@protoc_insertion_point(destructor:RatSim.RobotName)
+  SharedDtor(*this);
+}
+inline void RobotName::SharedDtor(MessageLite& self) {
+  RobotName& this_ = static_cast<RobotName&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.name_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* RobotName::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) RobotName(arena);
+}
+constexpr auto RobotName::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RobotName),
+                                            alignof(RobotName));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull RobotName::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_RobotName_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &RobotName::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<RobotName>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &RobotName::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<RobotName>(), &RobotName::ByteSizeLong,
+            &RobotName::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(RobotName, _impl_._cached_size_),
+        false,
+    },
+    &RobotName::kDescriptorMethods,
+    &descriptor_table_RatSim_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* RobotName::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 29, 2> RobotName::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::RatSim::RobotName>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string name = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RobotName, _impl_.name_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string name = 1;
+    {PROTOBUF_FIELD_OFFSET(RobotName, _impl_.name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\20\4\0\0\0\0\0\0"
+    "RatSim.RobotName"
+    "name"
+  }},
+};
+
+PROTOBUF_NOINLINE void RobotName::Clear() {
+// @@protoc_insertion_point(message_clear_start:RatSim.RobotName)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.name_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* RobotName::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const RobotName& this_ = static_cast<const RobotName&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* RobotName::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const RobotName& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:RatSim.RobotName)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string name = 1;
+          if (!this_._internal_name().empty()) {
+            const std::string& _s = this_._internal_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "RatSim.RobotName.name");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:RatSim.RobotName)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t RobotName::ByteSizeLong(const MessageLite& base) {
+          const RobotName& this_ = static_cast<const RobotName&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t RobotName::ByteSizeLong() const {
+          const RobotName& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:RatSim.RobotName)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // string name = 1;
+            if (!this_._internal_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_name());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void RobotName::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<RobotName*>(&to_msg);
+  auto& from = static_cast<const RobotName&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:RatSim.RobotName)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RobotName::CopyFrom(const RobotName& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:RatSim.RobotName)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RobotName::InternalSwap(RobotName* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+}
+
+::google::protobuf::Metadata RobotName::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

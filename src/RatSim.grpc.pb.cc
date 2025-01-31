@@ -39,69 +39,69 @@ LidarService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_GetLiDARDataAndOdom_(LidarService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status LidarService::Stub::GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::LidarData* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::EmptyRequest, ::RatSim::LidarData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetLiDARData_, context, request, response);
+::grpc::Status LidarService::Stub::GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::LidarData* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::LidarData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetLiDARData_, context, request, response);
 }
 
-void LidarService::Stub::async::GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::EmptyRequest, ::RatSim::LidarData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDARData_, context, request, response, std::move(f));
+void LidarService::Stub::async::GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::LidarData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDARData_, context, request, response, std::move(f));
 }
 
-void LidarService::Stub::async::GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response, ::grpc::ClientUnaryReactor* reactor) {
+void LidarService::Stub::async::GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDARData_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* LidarService::Stub::PrepareAsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::LidarData, ::RatSim::EmptyRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetLiDARData_, context, request);
+::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* LidarService::Stub::PrepareAsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::LidarData, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetLiDARData_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* LidarService::Stub::AsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* LidarService::Stub::AsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncGetLiDARDataRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status LidarService::Stub::GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::Odometry* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::EmptyRequest, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetLiDAROdom_, context, request, response);
+::grpc::Status LidarService::Stub::GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetLiDAROdom_, context, request, response);
 }
 
-void LidarService::Stub::async::GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::EmptyRequest, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDAROdom_, context, request, response, std::move(f));
+void LidarService::Stub::async::GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDAROdom_, context, request, response, std::move(f));
 }
 
-void LidarService::Stub::async::GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
+void LidarService::Stub::async::GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDAROdom_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* LidarService::Stub::PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::EmptyRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetLiDAROdom_, context, request);
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* LidarService::Stub::PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetLiDAROdom_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* LidarService::Stub::AsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* LidarService::Stub::AsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncGetLiDAROdomRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status LidarService::Stub::GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::LidarDataAndOdom* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetLiDARDataAndOdom_, context, request, response);
+::grpc::Status LidarService::Stub::GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::LidarDataAndOdom* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::LidarDataAndOdom, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetLiDARDataAndOdom_, context, request, response);
 }
 
-void LidarService::Stub::async::GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDARDataAndOdom_, context, request, response, std::move(f));
+void LidarService::Stub::async::GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::LidarDataAndOdom, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDARDataAndOdom_, context, request, response, std::move(f));
 }
 
-void LidarService::Stub::async::GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) {
+void LidarService::Stub::async::GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetLiDARDataAndOdom_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* LidarService::Stub::PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::LidarDataAndOdom, ::RatSim::EmptyRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetLiDARDataAndOdom_, context, request);
+::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* LidarService::Stub::PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::LidarDataAndOdom, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetLiDARDataAndOdom_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* LidarService::Stub::AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* LidarService::Stub::AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncGetLiDARDataAndOdomRaw(context, request, cq);
   result->StartCall();
@@ -112,30 +112,30 @@ LidarService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LidarService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< LidarService::Service, ::RatSim::EmptyRequest, ::RatSim::LidarData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< LidarService::Service, ::RatSim::RobotName, ::RatSim::LidarData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LidarService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::RatSim::EmptyRequest* req,
+             const ::RatSim::RobotName* req,
              ::RatSim::LidarData* resp) {
                return service->GetLiDARData(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LidarService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< LidarService::Service, ::RatSim::EmptyRequest, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< LidarService::Service, ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LidarService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::RatSim::EmptyRequest* req,
+             const ::RatSim::RobotName* req,
              ::RatSim::Odometry* resp) {
                return service->GetLiDAROdom(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LidarService_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< LidarService::Service, ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< LidarService::Service, ::RatSim::RobotName, ::RatSim::LidarDataAndOdom, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LidarService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::RatSim::EmptyRequest* req,
+             const ::RatSim::RobotName* req,
              ::RatSim::LidarDataAndOdom* resp) {
                return service->GetLiDARDataAndOdom(ctx, req, resp);
              }, this)));
@@ -144,21 +144,21 @@ LidarService::Service::Service() {
 LidarService::Service::~Service() {
 }
 
-::grpc::Status LidarService::Service::GetLiDARData(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response) {
+::grpc::Status LidarService::Service::GetLiDARData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status LidarService::Service::GetLiDAROdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response) {
+::grpc::Status LidarService::Service::GetLiDAROdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status LidarService::Service::GetLiDARDataAndOdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response) {
+::grpc::Status LidarService::Service::GetLiDARDataAndOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response) {
   (void) context;
   (void) request;
   (void) response;

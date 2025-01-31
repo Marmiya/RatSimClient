@@ -1,6 +1,10 @@
 <launch>
 
-  <node name="lidar_data_publisher" pkg="RatSim" type="Lidar_publisher.py" output="screen">
+  <arg name="robot_name" default="Husky"/>
+  <arg name="rate" default="30"/>
+  <node name="lidar_publisher" pkg="RatSim" type="ratsim_lidar" output="screen">
+      <param name="rate" value="$(arg rate)"/>
+      <param name="robot_name" value="$(arg robot_name)"/>
   </node>
 
   <node type="rviz" name="rviz_ratsim" pkg="rviz" args="-d $(find RatSim)/Rviz/Test.rviz"/>

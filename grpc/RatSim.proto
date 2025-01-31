@@ -32,6 +32,10 @@ message Status {
   bool status = 1;
 }
 
+message RobotName {
+  string name = 1;
+}
+
 // Mesh:
 message MeshData {
   bytes data = 1;           // Binary mesh data
@@ -92,9 +96,9 @@ message DepthCameraImageData {
 
 // Services:
 service LidarService {
-  rpc GetLiDARData (EmptyRequest) returns (LidarData);
-  rpc GetLiDAROdom (EmptyRequest) returns (Odometry);
-  rpc GetLiDARDataAndOdom (EmptyRequest) returns (LidarDataAndOdom);
+  rpc GetLiDARData (RobotName) returns (LidarData);
+  rpc GetLiDAROdom (RobotName) returns (Odometry);
+  rpc GetLiDARDataAndOdom (RobotName) returns (LidarDataAndOdom);
 }
 
 service MeshService {

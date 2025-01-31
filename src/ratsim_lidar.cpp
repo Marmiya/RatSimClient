@@ -20,14 +20,17 @@ private:
     const double MIN_DISTANCE = 2.0;
     const int MAX_CONSECUTIVE_FAILURES = 3;
     int rate_ = 10;
+    std::string robot_name_;
 
 public:
     LidarDataPublisher() : frame_id_("world") {
         ros::NodeHandle private_nh("~"); // Create private node handle
         pointcloud_pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/lidar/point_cloud", 1);
         odom_pub_ = nh_.advertise<nav_msgs::Odometry>("/lidar/odom", 1);
-        private_nh.param("rate", rate_, 10); // Use private node handle to get parameter
+        private_nh.param("robot_name", robot_name_, std::string("Mavic"));
+        private_nh.param("rate", rate_, 10);
         ROS_INFO_STREAM("Rate: " << rate_);
+        ROS_INFO_STREAM("Robot name: " << robot_name_);
     }
 
     bool initStub(const std::string& server_address = "localhost:50051") {
@@ -44,7 +47,8 @@ public:
         }
 
         grpc::ClientContext context;
-        RatSim::EmptyRequest request;
+        RatSim::RobotName request;
+        request.set_name(robot_name_);
         context.set_deadline(std::chrono::system_clock::now() + std::chrono::seconds(5));
 
         grpc::Status status = stub_->GetLiDARDataAndOdom(&context, request, &response);

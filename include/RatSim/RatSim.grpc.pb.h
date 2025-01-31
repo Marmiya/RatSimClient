@@ -36,81 +36,81 @@ class LidarService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::LidarData* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>> AsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::LidarData* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>> AsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>>(AsyncGetLiDARDataRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>> PrepareAsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>> PrepareAsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>>(PrepareAsyncGetLiDARDataRaw(context, request, cq));
     }
-    virtual ::grpc::Status GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::Odometry* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetLiDAROdomRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetLiDAROdomRaw(context, request, cq));
     }
-    virtual ::grpc::Status GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::LidarDataAndOdom* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>> AsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::LidarDataAndOdom* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>> AsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>>(AsyncGetLiDARDataAndOdomRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>> PrepareAsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>> PrepareAsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>>(PrepareAsyncGetLiDARDataAndOdomRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>* AsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>* PrepareAsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>* AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>* PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>* AsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>* PrepareAsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>* AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>* PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::LidarData* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>> AsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::LidarData* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>> AsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>>(AsyncGetLiDARDataRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>> PrepareAsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>> PrepareAsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>>(PrepareAsyncGetLiDARDataRaw(context, request, cq));
     }
-    ::grpc::Status GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::Odometry* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetLiDAROdomRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetLiDAROdomRaw(context, request, cq));
     }
-    ::grpc::Status GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::LidarDataAndOdom* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>> AsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::LidarDataAndOdom* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>> AsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>>(AsyncGetLiDARDataAndOdomRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>> PrepareAsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>> PrepareAsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>>(PrepareAsyncGetLiDARDataAndOdomRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response, std::function<void(::grpc::Status)>) override;
-      void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
-      void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)>) override;
-      void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, std::function<void(::grpc::Status)>) override;
+      void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
+      void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)>) override;
+      void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -122,12 +122,12 @@ class LidarService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* AsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* PrepareAsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* AsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarData>* PrepareAsyncGetLiDARDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetLiDAROdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* AsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::LidarDataAndOdom>* PrepareAsyncGetLiDARDataAndOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetLiDARData_;
     const ::grpc::internal::RpcMethod rpcmethod_GetLiDAROdom_;
     const ::grpc::internal::RpcMethod rpcmethod_GetLiDARDataAndOdom_;
@@ -138,9 +138,9 @@ class LidarService final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status GetLiDARData(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response);
-    virtual ::grpc::Status GetLiDAROdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response);
-    virtual ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response);
+    virtual ::grpc::Status GetLiDARData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response);
+    virtual ::grpc::Status GetLiDAROdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
+    virtual ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetLiDARData : public BaseClass {
@@ -154,11 +154,11 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarData* /*response*/) override {
+    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarData* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetLiDARData(::grpc::ServerContext* context, ::RatSim::EmptyRequest* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::LidarData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetLiDARData(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::LidarData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -174,11 +174,11 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
+    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetLiDAROdom(::grpc::ServerContext* context, ::RatSim::EmptyRequest* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetLiDAROdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -194,11 +194,11 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
+    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetLiDARDataAndOdom(::grpc::ServerContext* context, ::RatSim::EmptyRequest* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::LidarDataAndOdom>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetLiDARDataAndOdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::LidarDataAndOdom>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -210,25 +210,25 @@ class LidarService final {
    public:
     WithCallbackMethod_GetLiDARData() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::LidarData>(
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::LidarData>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarData* response) { return this->GetLiDARData(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response) { return this->GetLiDARData(context, request, response); }));}
     void SetMessageAllocatorFor_GetLiDARData(
-        ::grpc::MessageAllocator< ::RatSim::EmptyRequest, ::RatSim::LidarData>* allocator) {
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::LidarData>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::LidarData>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::LidarData>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_GetLiDARData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarData* /*response*/) override {
+    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarData* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* GetLiDARData(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarData* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarData* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_GetLiDAROdom : public BaseClass {
@@ -237,25 +237,25 @@ class LidarService final {
    public:
     WithCallbackMethod_GetLiDAROdom() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::Odometry>(
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response) { return this->GetLiDAROdom(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) { return this->GetLiDAROdom(context, request, response); }));}
     void SetMessageAllocatorFor_GetLiDAROdom(
-        ::grpc::MessageAllocator< ::RatSim::EmptyRequest, ::RatSim::Odometry>* allocator) {
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::Odometry>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::Odometry>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_GetLiDAROdom() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
+    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* GetLiDAROdom(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_GetLiDARDataAndOdom : public BaseClass {
@@ -264,25 +264,25 @@ class LidarService final {
    public:
     WithCallbackMethod_GetLiDARDataAndOdom() {
       ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom>(
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::LidarDataAndOdom>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::LidarDataAndOdom* response) { return this->GetLiDARDataAndOdom(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response) { return this->GetLiDARDataAndOdom(context, request, response); }));}
     void SetMessageAllocatorFor_GetLiDARDataAndOdom(
-        ::grpc::MessageAllocator< ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom>* allocator) {
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::LidarDataAndOdom>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::LidarDataAndOdom>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_GetLiDARDataAndOdom() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
+    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* GetLiDARDataAndOdom(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_GetLiDARData<WithCallbackMethod_GetLiDAROdom<WithCallbackMethod_GetLiDARDataAndOdom<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -298,7 +298,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarData* /*response*/) override {
+    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarData* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -315,7 +315,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
+    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -332,7 +332,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
+    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -349,7 +349,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarData* /*response*/) override {
+    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarData* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -369,7 +369,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
+    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -389,7 +389,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
+    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -412,7 +412,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarData* /*response*/) override {
+    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarData* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -434,7 +434,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
+    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -456,7 +456,7 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
+    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -471,10 +471,10 @@ class LidarService final {
     WithStreamedUnaryMethod_GetLiDARData() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::EmptyRequest, ::RatSim::LidarData>(
+          ::RatSim::RobotName, ::RatSim::LidarData>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::RatSim::EmptyRequest, ::RatSim::LidarData>* streamer) {
+                     ::RatSim::RobotName, ::RatSim::LidarData>* streamer) {
                        return this->StreamedGetLiDARData(context,
                          streamer);
                   }));
@@ -483,12 +483,12 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarData* /*response*/) override {
+    ::grpc::Status GetLiDARData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarData* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetLiDARData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::EmptyRequest,::RatSim::LidarData>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedGetLiDARData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::LidarData>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetLiDAROdom : public BaseClass {
@@ -498,10 +498,10 @@ class LidarService final {
     WithStreamedUnaryMethod_GetLiDAROdom() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::EmptyRequest, ::RatSim::Odometry>(
+          ::RatSim::RobotName, ::RatSim::Odometry>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::RatSim::EmptyRequest, ::RatSim::Odometry>* streamer) {
+                     ::RatSim::RobotName, ::RatSim::Odometry>* streamer) {
                        return this->StreamedGetLiDAROdom(context,
                          streamer);
                   }));
@@ -510,12 +510,12 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
+    ::grpc::Status GetLiDAROdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetLiDAROdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::EmptyRequest,::RatSim::Odometry>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedGetLiDAROdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::Odometry>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetLiDARDataAndOdom : public BaseClass {
@@ -525,10 +525,10 @@ class LidarService final {
     WithStreamedUnaryMethod_GetLiDARDataAndOdom() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom>(
+          ::RatSim::RobotName, ::RatSim::LidarDataAndOdom>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::RatSim::EmptyRequest, ::RatSim::LidarDataAndOdom>* streamer) {
+                     ::RatSim::RobotName, ::RatSim::LidarDataAndOdom>* streamer) {
                        return this->StreamedGetLiDARDataAndOdom(context,
                          streamer);
                   }));
@@ -537,12 +537,12 @@ class LidarService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
+    ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::LidarDataAndOdom* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetLiDARDataAndOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::EmptyRequest,::RatSim::LidarDataAndOdom>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedGetLiDARDataAndOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::LidarDataAndOdom>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_GetLiDARData<WithStreamedUnaryMethod_GetLiDAROdom<WithStreamedUnaryMethod_GetLiDARDataAndOdom<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;

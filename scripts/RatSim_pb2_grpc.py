@@ -37,17 +37,17 @@ class LidarServiceStub(object):
         """
         self.GetLiDARData = channel.unary_unary(
                 '/RatSim.LidarService/GetLiDARData',
-                request_serializer=RatSim__pb2.EmptyRequest.SerializeToString,
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
                 response_deserializer=RatSim__pb2.LidarData.FromString,
                 _registered_method=True)
         self.GetLiDAROdom = channel.unary_unary(
                 '/RatSim.LidarService/GetLiDAROdom',
-                request_serializer=RatSim__pb2.EmptyRequest.SerializeToString,
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
                 response_deserializer=RatSim__pb2.Odometry.FromString,
                 _registered_method=True)
         self.GetLiDARDataAndOdom = channel.unary_unary(
                 '/RatSim.LidarService/GetLiDARDataAndOdom',
-                request_serializer=RatSim__pb2.EmptyRequest.SerializeToString,
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
                 response_deserializer=RatSim__pb2.LidarDataAndOdom.FromString,
                 _registered_method=True)
 
@@ -79,17 +79,17 @@ def add_LidarServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetLiDARData': grpc.unary_unary_rpc_method_handler(
                     servicer.GetLiDARData,
-                    request_deserializer=RatSim__pb2.EmptyRequest.FromString,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
                     response_serializer=RatSim__pb2.LidarData.SerializeToString,
             ),
             'GetLiDAROdom': grpc.unary_unary_rpc_method_handler(
                     servicer.GetLiDAROdom,
-                    request_deserializer=RatSim__pb2.EmptyRequest.FromString,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
                     response_serializer=RatSim__pb2.Odometry.SerializeToString,
             ),
             'GetLiDARDataAndOdom': grpc.unary_unary_rpc_method_handler(
                     servicer.GetLiDARDataAndOdom,
-                    request_deserializer=RatSim__pb2.EmptyRequest.FromString,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
                     response_serializer=RatSim__pb2.LidarDataAndOdom.SerializeToString,
             ),
     }
@@ -119,7 +119,7 @@ class LidarService(object):
             request,
             target,
             '/RatSim.LidarService/GetLiDARData',
-            RatSim__pb2.EmptyRequest.SerializeToString,
+            RatSim__pb2.RobotName.SerializeToString,
             RatSim__pb2.LidarData.FromString,
             options,
             channel_credentials,
@@ -146,7 +146,7 @@ class LidarService(object):
             request,
             target,
             '/RatSim.LidarService/GetLiDAROdom',
-            RatSim__pb2.EmptyRequest.SerializeToString,
+            RatSim__pb2.RobotName.SerializeToString,
             RatSim__pb2.Odometry.FromString,
             options,
             channel_credentials,
@@ -173,7 +173,7 @@ class LidarService(object):
             request,
             target,
             '/RatSim.LidarService/GetLiDARDataAndOdom',
-            RatSim__pb2.EmptyRequest.SerializeToString,
+            RatSim__pb2.RobotName.SerializeToString,
             RatSim__pb2.LidarDataAndOdom.FromString,
             options,
             channel_credentials,
