@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cRatSim.proto\x12\x06RatSim\"(\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"=\n\x0ePointWithColor\x12\x1c\n\x05point\x18\x01 \x01(\x0b\x32\r.RatSim.Point\x12\r\n\x05\x63olor\x18\x02 \x01(\r\";\n\x13PointCloudWithColor\x12$\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x16.RatSim.PointWithColor\"\x0e\n\x0c\x45mptyRequest\"D\n\x08Odometry\x12\x1a\n\x04pose\x18\x01 \x01(\x0b\x32\x0c.RatSim.Pose\x12\x1c\n\x05twist\x18\x02 \x01(\x0b\x32\r.RatSim.twist\"\x18\n\x06Status\x12\x0e\n\x06status\x18\x01 \x01(\x08\"\x19\n\tRobotName\x12\x0c\n\x04name\x18\x01 \x01(\t\"n\n\x08MeshData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x0e\n\x06\x66ormat\x18\x02 \x01(\r\x12\x0f\n\x07version\x18\x03 \x01(\r\x12\x12\n\nsimplified\x18\x04 \x01(\x08\x12\x1f\n\ttransform\x18\x05 \x01(\x0b\x32\x0c.RatSim.Pose\"R\n\x10MeshDataWithOdom\x12\x1e\n\x04mesh\x18\x01 \x01(\x0b\x32\x10.RatSim.MeshData\x12\x1e\n\x04odom\x18\x02 \x01(\x0b\x32\x10.RatSim.Odometry\"Q\n\x04Pose\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x12\x0c\n\x04roll\x18\x04 \x01(\x02\x12\r\n\x05pitch\x18\x05 \x01(\x02\x12\x0b\n\x03yaw\x18\x06 \x01(\x02\"v\n\x05twist\x12\x10\n\x08linear_x\x18\x01 \x01(\x02\x12\x10\n\x08linear_y\x18\x02 \x01(\x02\x12\x10\n\x08linear_z\x18\x03 \x01(\x02\x12\x11\n\tangular_x\x18\x04 \x01(\x02\x12\x11\n\tangular_y\x18\x05 \x01(\x02\x12\x11\n\tangular_z\x18\x06 \x01(\x02\":\n\nLidarPoint\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x12\x0b\n\x03hit\x18\x04 \x01(\x05\"-\n\tLidarData\x12 \n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x12.RatSim.LidarPoint\"S\n\x10LidarDataAndOdom\x12\x1f\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x11.RatSim.LidarData\x12\x1e\n\x04odom\x18\x02 \x01(\x0b\x32\x10.RatSim.Odometry\"3\n\x14\x44\x65pthCameraPointData\x12\x1b\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\r.RatSim.Point\"$\n\x14\x44\x65pthCameraImageData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x03(\x02\x32\xbd\x01\n\x0cLidarService\x12\x34\n\x0cGetLiDARData\x12\x11.RatSim.RobotName\x1a\x11.RatSim.LidarData\x12\x33\n\x0cGetLiDAROdom\x12\x11.RatSim.RobotName\x1a\x10.RatSim.Odometry\x12\x42\n\x13GetLiDARDataAndOdom\x12\x11.RatSim.RobotName\x1a\x18.RatSim.LidarDataAndOdom2;\n\x0bMeshService\x12,\n\x08SendMesh\x12\x10.RatSim.MeshData\x1a\x0e.RatSim.Status2[\n\x11PointCloudService\x12\x46\n\x17SendPointCloudWithColor\x12\x1b.RatSim.PointCloudWithColor\x1a\x0e.RatSim.Status2\xf0\x01\n\x12\x44\x65pthCameraService\x12M\n\x17GetDepthCameraPointData\x12\x14.RatSim.EmptyRequest\x1a\x1c.RatSim.DepthCameraPointData\x12M\n\x17GetDepthCameraImageData\x12\x14.RatSim.EmptyRequest\x1a\x1c.RatSim.DepthCameraImageData\x12<\n\x12GetDepthCameraOdom\x12\x14.RatSim.EmptyRequest\x1a\x10.RatSim.Odometryb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cRatSim.proto\x12\x06RatSim\"(\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\"=\n\x0ePointWithColor\x12\x1c\n\x05point\x18\x01 \x01(\x0b\x32\r.RatSim.Point\x12\r\n\x05\x63olor\x18\x02 \x01(\r\";\n\x13PointCloudWithColor\x12$\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x16.RatSim.PointWithColor\"\x0e\n\x0c\x45mptyRequest\"Q\n\x04Pose\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x12\x0c\n\x04roll\x18\x04 \x01(\x02\x12\r\n\x05pitch\x18\x05 \x01(\x02\x12\x0b\n\x03yaw\x18\x06 \x01(\x02\"v\n\x05twist\x12\x10\n\x08linear_x\x18\x01 \x01(\x02\x12\x10\n\x08linear_y\x18\x02 \x01(\x02\x12\x10\n\x08linear_z\x18\x03 \x01(\x02\x12\x11\n\tangular_x\x18\x04 \x01(\x02\x12\x11\n\tangular_y\x18\x05 \x01(\x02\x12\x11\n\tangular_z\x18\x06 \x01(\x02\"D\n\x08Odometry\x12\x1a\n\x04pose\x18\x01 \x01(\x0b\x32\x0c.RatSim.Pose\x12\x1c\n\x05twist\x18\x02 \x01(\x0b\x32\r.RatSim.twist\"\x18\n\x06Status\x12\x0e\n\x06status\x18\x01 \x01(\x08\"\x19\n\tRobotName\x12\x0c\n\x04name\x18\x01 \x01(\t\"n\n\x08MeshData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x0e\n\x06\x66ormat\x18\x02 \x01(\r\x12\x0f\n\x07version\x18\x03 \x01(\r\x12\x12\n\nsimplified\x18\x04 \x01(\x08\x12\x1f\n\ttransform\x18\x05 \x01(\x0b\x32\x0c.RatSim.Pose\"R\n\x10MeshDataWithOdom\x12\x1e\n\x04mesh\x18\x01 \x01(\x0b\x32\x10.RatSim.MeshData\x12\x1e\n\x04odom\x18\x02 \x01(\x0b\x32\x10.RatSim.Odometry\":\n\nLidarPoint\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x12\x0b\n\x03hit\x18\x04 \x01(\x05\"-\n\tLidarData\x12 \n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x12.RatSim.LidarPoint\"S\n\x10LidarDataAndOdom\x12\x1f\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x11.RatSim.LidarData\x12\x1e\n\x04odom\x18\x02 \x01(\x0b\x32\x10.RatSim.Odometry\"3\n\x14\x44\x65pthCameraPointData\x12\x1b\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\r.RatSim.Point\"$\n\x14\x44\x65pthCameraImageData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x03(\x02\"5\n\tDronePose\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1a\n\x04pose\x18\x02 \x01(\x0b\x32\x0c.RatSim.Pose2\xbd\x01\n\x0cLidarService\x12\x34\n\x0cGetLiDARData\x12\x11.RatSim.RobotName\x1a\x11.RatSim.LidarData\x12\x33\n\x0cGetLiDAROdom\x12\x11.RatSim.RobotName\x1a\x10.RatSim.Odometry\x12\x42\n\x13GetLiDARDataAndOdom\x12\x11.RatSim.RobotName\x1a\x18.RatSim.LidarDataAndOdom2;\n\x0bMeshService\x12,\n\x08SendMesh\x12\x10.RatSim.MeshData\x1a\x0e.RatSim.Status2[\n\x11PointCloudService\x12\x46\n\x17SendPointCloudWithColor\x12\x1b.RatSim.PointCloudWithColor\x1a\x0e.RatSim.Status2\xf0\x01\n\x12\x44\x65pthCameraService\x12M\n\x17GetDepthCameraPointData\x12\x14.RatSim.EmptyRequest\x1a\x1c.RatSim.DepthCameraPointData\x12M\n\x17GetDepthCameraImageData\x12\x14.RatSim.EmptyRequest\x1a\x1c.RatSim.DepthCameraImageData\x12<\n\x12GetDepthCameraOdom\x12\x14.RatSim.EmptyRequest\x1a\x10.RatSim.Odometry2w\n\x0c\x44roneService\x12\x33\n\x0cGetDroneOdom\x12\x11.RatSim.RobotName\x1a\x10.RatSim.Odometry\x12\x32\n\rSendDronePose\x12\x11.RatSim.DronePose\x1a\x0e.RatSim.Statusb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,20 +39,20 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_POINTCLOUDWITHCOLOR']._serialized_end=188
   _globals['_EMPTYREQUEST']._serialized_start=190
   _globals['_EMPTYREQUEST']._serialized_end=204
-  _globals['_ODOMETRY']._serialized_start=206
-  _globals['_ODOMETRY']._serialized_end=274
-  _globals['_STATUS']._serialized_start=276
-  _globals['_STATUS']._serialized_end=300
-  _globals['_ROBOTNAME']._serialized_start=302
-  _globals['_ROBOTNAME']._serialized_end=327
-  _globals['_MESHDATA']._serialized_start=329
-  _globals['_MESHDATA']._serialized_end=439
-  _globals['_MESHDATAWITHODOM']._serialized_start=441
-  _globals['_MESHDATAWITHODOM']._serialized_end=523
-  _globals['_POSE']._serialized_start=525
-  _globals['_POSE']._serialized_end=606
-  _globals['_TWIST']._serialized_start=608
-  _globals['_TWIST']._serialized_end=726
+  _globals['_POSE']._serialized_start=206
+  _globals['_POSE']._serialized_end=287
+  _globals['_TWIST']._serialized_start=289
+  _globals['_TWIST']._serialized_end=407
+  _globals['_ODOMETRY']._serialized_start=409
+  _globals['_ODOMETRY']._serialized_end=477
+  _globals['_STATUS']._serialized_start=479
+  _globals['_STATUS']._serialized_end=503
+  _globals['_ROBOTNAME']._serialized_start=505
+  _globals['_ROBOTNAME']._serialized_end=530
+  _globals['_MESHDATA']._serialized_start=532
+  _globals['_MESHDATA']._serialized_end=642
+  _globals['_MESHDATAWITHODOM']._serialized_start=644
+  _globals['_MESHDATAWITHODOM']._serialized_end=726
   _globals['_LIDARPOINT']._serialized_start=728
   _globals['_LIDARPOINT']._serialized_end=786
   _globals['_LIDARDATA']._serialized_start=788
@@ -63,12 +63,16 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_DEPTHCAMERAPOINTDATA']._serialized_end=971
   _globals['_DEPTHCAMERAIMAGEDATA']._serialized_start=973
   _globals['_DEPTHCAMERAIMAGEDATA']._serialized_end=1009
-  _globals['_LIDARSERVICE']._serialized_start=1012
-  _globals['_LIDARSERVICE']._serialized_end=1201
-  _globals['_MESHSERVICE']._serialized_start=1203
-  _globals['_MESHSERVICE']._serialized_end=1262
-  _globals['_POINTCLOUDSERVICE']._serialized_start=1264
-  _globals['_POINTCLOUDSERVICE']._serialized_end=1355
-  _globals['_DEPTHCAMERASERVICE']._serialized_start=1358
-  _globals['_DEPTHCAMERASERVICE']._serialized_end=1598
+  _globals['_DRONEPOSE']._serialized_start=1011
+  _globals['_DRONEPOSE']._serialized_end=1064
+  _globals['_LIDARSERVICE']._serialized_start=1067
+  _globals['_LIDARSERVICE']._serialized_end=1256
+  _globals['_MESHSERVICE']._serialized_start=1258
+  _globals['_MESHSERVICE']._serialized_end=1317
+  _globals['_POINTCLOUDSERVICE']._serialized_start=1319
+  _globals['_POINTCLOUDSERVICE']._serialized_end=1410
+  _globals['_DEPTHCAMERASERVICE']._serialized_start=1413
+  _globals['_DEPTHCAMERASERVICE']._serialized_end=1653
+  _globals['_DRONESERVICE']._serialized_start=1655
+  _globals['_DRONESERVICE']._serialized_end=1774
 # @@protoc_insertion_point(module_scope)

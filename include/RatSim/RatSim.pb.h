@@ -59,6 +59,9 @@ extern DepthCameraImageDataDefaultTypeInternal _DepthCameraImageData_default_ins
 class DepthCameraPointData;
 struct DepthCameraPointDataDefaultTypeInternal;
 extern DepthCameraPointDataDefaultTypeInternal _DepthCameraPointData_default_instance_;
+class DronePose;
+struct DronePoseDefaultTypeInternal;
+extern DronePoseDefaultTypeInternal _DronePose_default_instance_;
 class EmptyRequest;
 struct EmptyRequestDefaultTypeInternal;
 extern EmptyRequestDefaultTypeInternal _EmptyRequest_default_instance_;
@@ -174,7 +177,7 @@ class twist final
     return reinterpret_cast<const twist*>(
         &_twist_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(twist& a, twist& b) { a.Swap(&b); }
   inline void Swap(twist* other) {
     if (other == this) return;
@@ -425,7 +428,7 @@ class Status final
     return reinterpret_cast<const Status*>(
         &_Status_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(Status& a, Status& b) { a.Swap(&b); }
   inline void Swap(Status* other) {
     if (other == this) return;
@@ -616,7 +619,7 @@ class RobotName final
     return reinterpret_cast<const RobotName*>(
         &_RobotName_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(RobotName& a, RobotName& b) { a.Swap(&b); }
   inline void Swap(RobotName* other) {
     if (other == this) return;
@@ -813,7 +816,7 @@ class Pose final
     return reinterpret_cast<const Pose*>(
         &_Pose_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(Pose& a, Pose& b) { a.Swap(&b); }
   inline void Swap(Pose* other) {
     if (other == this) return;
@@ -2060,7 +2063,7 @@ class Odometry final
     return reinterpret_cast<const Odometry*>(
         &_Odometry_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 6;
   friend void swap(Odometry& a, Odometry& b) { a.Swap(&b); }
   inline void Swap(Odometry* other) {
     if (other == this) return;
@@ -2274,7 +2277,7 @@ class MeshData final
     return reinterpret_cast<const MeshData*>(
         &_MeshData_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(MeshData& a, MeshData& b) { a.Swap(&b); }
   inline void Swap(MeshData* other) {
     if (other == this) return;
@@ -2656,6 +2659,221 @@ class LidarData final
                           const LidarData& from_msg);
     ::google::protobuf::RepeatedPtrField< ::RatSim::LidarPoint > data_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_RatSim_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DronePose final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:RatSim.DronePose) */ {
+ public:
+  inline DronePose() : DronePose(nullptr) {}
+  ~DronePose() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(DronePose* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(DronePose));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR DronePose(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline DronePose(const DronePose& from) : DronePose(nullptr, from) {}
+  inline DronePose(DronePose&& from) noexcept
+      : DronePose(nullptr, std::move(from)) {}
+  inline DronePose& operator=(const DronePose& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DronePose& operator=(DronePose&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DronePose& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DronePose* internal_default_instance() {
+    return reinterpret_cast<const DronePose*>(
+        &_DronePose_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 16;
+  friend void swap(DronePose& a, DronePose& b) { a.Swap(&b); }
+  inline void Swap(DronePose* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DronePose* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DronePose* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<DronePose>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const DronePose& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const DronePose& from) { DronePose::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(DronePose* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "RatSim.DronePose"; }
+
+ protected:
+  explicit DronePose(::google::protobuf::Arena* arena);
+  DronePose(::google::protobuf::Arena* arena, const DronePose& from);
+  DronePose(::google::protobuf::Arena* arena, DronePose&& from) noexcept
+      : DronePose(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kNameFieldNumber = 1,
+    kPoseFieldNumber = 2,
+  };
+  // string name = 1;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // .RatSim.Pose pose = 2;
+  bool has_pose() const;
+  void clear_pose() ;
+  const ::RatSim::Pose& pose() const;
+  PROTOBUF_NODISCARD ::RatSim::Pose* release_pose();
+  ::RatSim::Pose* mutable_pose();
+  void set_allocated_pose(::RatSim::Pose* value);
+  void unsafe_arena_set_allocated_pose(::RatSim::Pose* value);
+  ::RatSim::Pose* unsafe_arena_release_pose();
+
+  private:
+  const ::RatSim::Pose& _internal_pose() const;
+  ::RatSim::Pose* _internal_mutable_pose();
+
+  public:
+  // @@protoc_insertion_point(class_scope:RatSim.DronePose)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      29, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const DronePose& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::RatSim::Pose* pose_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -3119,7 +3337,7 @@ class MeshDataWithOdom final
     return reinterpret_cast<const MeshDataWithOdom*>(
         &_MeshDataWithOdom_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(MeshDataWithOdom& a, MeshDataWithOdom& b) { a.Swap(&b); }
   inline void Swap(MeshDataWithOdom* other) {
     if (other == this) return;
@@ -3746,6 +3964,278 @@ PointCloudWithColor::_internal_mutable_data() {
 // -------------------------------------------------------------------
 
 // EmptyRequest
+
+// -------------------------------------------------------------------
+
+// Pose
+
+// float x = 1;
+inline void Pose::clear_x() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = 0;
+}
+inline float Pose::x() const {
+  // @@protoc_insertion_point(field_get:RatSim.Pose.x)
+  return _internal_x();
+}
+inline void Pose::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:RatSim.Pose.x)
+}
+inline float Pose::_internal_x() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.x_;
+}
+inline void Pose::_internal_set_x(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = value;
+}
+
+// float y = 2;
+inline void Pose::clear_y() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = 0;
+}
+inline float Pose::y() const {
+  // @@protoc_insertion_point(field_get:RatSim.Pose.y)
+  return _internal_y();
+}
+inline void Pose::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:RatSim.Pose.y)
+}
+inline float Pose::_internal_y() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.y_;
+}
+inline void Pose::_internal_set_y(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = value;
+}
+
+// float z = 3;
+inline void Pose::clear_z() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = 0;
+}
+inline float Pose::z() const {
+  // @@protoc_insertion_point(field_get:RatSim.Pose.z)
+  return _internal_z();
+}
+inline void Pose::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:RatSim.Pose.z)
+}
+inline float Pose::_internal_z() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.z_;
+}
+inline void Pose::_internal_set_z(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = value;
+}
+
+// float roll = 4;
+inline void Pose::clear_roll() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.roll_ = 0;
+}
+inline float Pose::roll() const {
+  // @@protoc_insertion_point(field_get:RatSim.Pose.roll)
+  return _internal_roll();
+}
+inline void Pose::set_roll(float value) {
+  _internal_set_roll(value);
+  // @@protoc_insertion_point(field_set:RatSim.Pose.roll)
+}
+inline float Pose::_internal_roll() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.roll_;
+}
+inline void Pose::_internal_set_roll(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.roll_ = value;
+}
+
+// float pitch = 5;
+inline void Pose::clear_pitch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pitch_ = 0;
+}
+inline float Pose::pitch() const {
+  // @@protoc_insertion_point(field_get:RatSim.Pose.pitch)
+  return _internal_pitch();
+}
+inline void Pose::set_pitch(float value) {
+  _internal_set_pitch(value);
+  // @@protoc_insertion_point(field_set:RatSim.Pose.pitch)
+}
+inline float Pose::_internal_pitch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.pitch_;
+}
+inline void Pose::_internal_set_pitch(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pitch_ = value;
+}
+
+// float yaw = 6;
+inline void Pose::clear_yaw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yaw_ = 0;
+}
+inline float Pose::yaw() const {
+  // @@protoc_insertion_point(field_get:RatSim.Pose.yaw)
+  return _internal_yaw();
+}
+inline void Pose::set_yaw(float value) {
+  _internal_set_yaw(value);
+  // @@protoc_insertion_point(field_set:RatSim.Pose.yaw)
+}
+inline float Pose::_internal_yaw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.yaw_;
+}
+inline void Pose::_internal_set_yaw(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yaw_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// twist
+
+// float linear_x = 1;
+inline void twist::clear_linear_x() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.linear_x_ = 0;
+}
+inline float twist::linear_x() const {
+  // @@protoc_insertion_point(field_get:RatSim.twist.linear_x)
+  return _internal_linear_x();
+}
+inline void twist::set_linear_x(float value) {
+  _internal_set_linear_x(value);
+  // @@protoc_insertion_point(field_set:RatSim.twist.linear_x)
+}
+inline float twist::_internal_linear_x() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.linear_x_;
+}
+inline void twist::_internal_set_linear_x(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.linear_x_ = value;
+}
+
+// float linear_y = 2;
+inline void twist::clear_linear_y() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.linear_y_ = 0;
+}
+inline float twist::linear_y() const {
+  // @@protoc_insertion_point(field_get:RatSim.twist.linear_y)
+  return _internal_linear_y();
+}
+inline void twist::set_linear_y(float value) {
+  _internal_set_linear_y(value);
+  // @@protoc_insertion_point(field_set:RatSim.twist.linear_y)
+}
+inline float twist::_internal_linear_y() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.linear_y_;
+}
+inline void twist::_internal_set_linear_y(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.linear_y_ = value;
+}
+
+// float linear_z = 3;
+inline void twist::clear_linear_z() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.linear_z_ = 0;
+}
+inline float twist::linear_z() const {
+  // @@protoc_insertion_point(field_get:RatSim.twist.linear_z)
+  return _internal_linear_z();
+}
+inline void twist::set_linear_z(float value) {
+  _internal_set_linear_z(value);
+  // @@protoc_insertion_point(field_set:RatSim.twist.linear_z)
+}
+inline float twist::_internal_linear_z() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.linear_z_;
+}
+inline void twist::_internal_set_linear_z(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.linear_z_ = value;
+}
+
+// float angular_x = 4;
+inline void twist::clear_angular_x() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_x_ = 0;
+}
+inline float twist::angular_x() const {
+  // @@protoc_insertion_point(field_get:RatSim.twist.angular_x)
+  return _internal_angular_x();
+}
+inline void twist::set_angular_x(float value) {
+  _internal_set_angular_x(value);
+  // @@protoc_insertion_point(field_set:RatSim.twist.angular_x)
+}
+inline float twist::_internal_angular_x() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.angular_x_;
+}
+inline void twist::_internal_set_angular_x(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_x_ = value;
+}
+
+// float angular_y = 5;
+inline void twist::clear_angular_y() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_y_ = 0;
+}
+inline float twist::angular_y() const {
+  // @@protoc_insertion_point(field_get:RatSim.twist.angular_y)
+  return _internal_angular_y();
+}
+inline void twist::set_angular_y(float value) {
+  _internal_set_angular_y(value);
+  // @@protoc_insertion_point(field_set:RatSim.twist.angular_y)
+}
+inline float twist::_internal_angular_y() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.angular_y_;
+}
+inline void twist::_internal_set_angular_y(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_y_ = value;
+}
+
+// float angular_z = 6;
+inline void twist::clear_angular_z() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_z_ = 0;
+}
+inline float twist::angular_z() const {
+  // @@protoc_insertion_point(field_get:RatSim.twist.angular_z)
+  return _internal_angular_z();
+}
+inline void twist::set_angular_z(float value) {
+  _internal_set_angular_z(value);
+  // @@protoc_insertion_point(field_set:RatSim.twist.angular_z)
+}
+inline float twist::_internal_angular_z() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.angular_z_;
+}
+inline void twist::_internal_set_angular_z(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.angular_z_ = value;
+}
 
 // -------------------------------------------------------------------
 
@@ -4433,278 +4923,6 @@ inline void MeshDataWithOdom::set_allocated_odom(::RatSim::Odometry* value) {
 
 // -------------------------------------------------------------------
 
-// Pose
-
-// float x = 1;
-inline void Pose::clear_x() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.x_ = 0;
-}
-inline float Pose::x() const {
-  // @@protoc_insertion_point(field_get:RatSim.Pose.x)
-  return _internal_x();
-}
-inline void Pose::set_x(float value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:RatSim.Pose.x)
-}
-inline float Pose::_internal_x() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.x_;
-}
-inline void Pose::_internal_set_x(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.x_ = value;
-}
-
-// float y = 2;
-inline void Pose::clear_y() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.y_ = 0;
-}
-inline float Pose::y() const {
-  // @@protoc_insertion_point(field_get:RatSim.Pose.y)
-  return _internal_y();
-}
-inline void Pose::set_y(float value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:RatSim.Pose.y)
-}
-inline float Pose::_internal_y() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.y_;
-}
-inline void Pose::_internal_set_y(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.y_ = value;
-}
-
-// float z = 3;
-inline void Pose::clear_z() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.z_ = 0;
-}
-inline float Pose::z() const {
-  // @@protoc_insertion_point(field_get:RatSim.Pose.z)
-  return _internal_z();
-}
-inline void Pose::set_z(float value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:RatSim.Pose.z)
-}
-inline float Pose::_internal_z() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.z_;
-}
-inline void Pose::_internal_set_z(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.z_ = value;
-}
-
-// float roll = 4;
-inline void Pose::clear_roll() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.roll_ = 0;
-}
-inline float Pose::roll() const {
-  // @@protoc_insertion_point(field_get:RatSim.Pose.roll)
-  return _internal_roll();
-}
-inline void Pose::set_roll(float value) {
-  _internal_set_roll(value);
-  // @@protoc_insertion_point(field_set:RatSim.Pose.roll)
-}
-inline float Pose::_internal_roll() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.roll_;
-}
-inline void Pose::_internal_set_roll(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.roll_ = value;
-}
-
-// float pitch = 5;
-inline void Pose::clear_pitch() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.pitch_ = 0;
-}
-inline float Pose::pitch() const {
-  // @@protoc_insertion_point(field_get:RatSim.Pose.pitch)
-  return _internal_pitch();
-}
-inline void Pose::set_pitch(float value) {
-  _internal_set_pitch(value);
-  // @@protoc_insertion_point(field_set:RatSim.Pose.pitch)
-}
-inline float Pose::_internal_pitch() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.pitch_;
-}
-inline void Pose::_internal_set_pitch(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.pitch_ = value;
-}
-
-// float yaw = 6;
-inline void Pose::clear_yaw() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.yaw_ = 0;
-}
-inline float Pose::yaw() const {
-  // @@protoc_insertion_point(field_get:RatSim.Pose.yaw)
-  return _internal_yaw();
-}
-inline void Pose::set_yaw(float value) {
-  _internal_set_yaw(value);
-  // @@protoc_insertion_point(field_set:RatSim.Pose.yaw)
-}
-inline float Pose::_internal_yaw() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.yaw_;
-}
-inline void Pose::_internal_set_yaw(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.yaw_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// twist
-
-// float linear_x = 1;
-inline void twist::clear_linear_x() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.linear_x_ = 0;
-}
-inline float twist::linear_x() const {
-  // @@protoc_insertion_point(field_get:RatSim.twist.linear_x)
-  return _internal_linear_x();
-}
-inline void twist::set_linear_x(float value) {
-  _internal_set_linear_x(value);
-  // @@protoc_insertion_point(field_set:RatSim.twist.linear_x)
-}
-inline float twist::_internal_linear_x() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.linear_x_;
-}
-inline void twist::_internal_set_linear_x(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.linear_x_ = value;
-}
-
-// float linear_y = 2;
-inline void twist::clear_linear_y() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.linear_y_ = 0;
-}
-inline float twist::linear_y() const {
-  // @@protoc_insertion_point(field_get:RatSim.twist.linear_y)
-  return _internal_linear_y();
-}
-inline void twist::set_linear_y(float value) {
-  _internal_set_linear_y(value);
-  // @@protoc_insertion_point(field_set:RatSim.twist.linear_y)
-}
-inline float twist::_internal_linear_y() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.linear_y_;
-}
-inline void twist::_internal_set_linear_y(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.linear_y_ = value;
-}
-
-// float linear_z = 3;
-inline void twist::clear_linear_z() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.linear_z_ = 0;
-}
-inline float twist::linear_z() const {
-  // @@protoc_insertion_point(field_get:RatSim.twist.linear_z)
-  return _internal_linear_z();
-}
-inline void twist::set_linear_z(float value) {
-  _internal_set_linear_z(value);
-  // @@protoc_insertion_point(field_set:RatSim.twist.linear_z)
-}
-inline float twist::_internal_linear_z() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.linear_z_;
-}
-inline void twist::_internal_set_linear_z(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.linear_z_ = value;
-}
-
-// float angular_x = 4;
-inline void twist::clear_angular_x() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.angular_x_ = 0;
-}
-inline float twist::angular_x() const {
-  // @@protoc_insertion_point(field_get:RatSim.twist.angular_x)
-  return _internal_angular_x();
-}
-inline void twist::set_angular_x(float value) {
-  _internal_set_angular_x(value);
-  // @@protoc_insertion_point(field_set:RatSim.twist.angular_x)
-}
-inline float twist::_internal_angular_x() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.angular_x_;
-}
-inline void twist::_internal_set_angular_x(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.angular_x_ = value;
-}
-
-// float angular_y = 5;
-inline void twist::clear_angular_y() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.angular_y_ = 0;
-}
-inline float twist::angular_y() const {
-  // @@protoc_insertion_point(field_get:RatSim.twist.angular_y)
-  return _internal_angular_y();
-}
-inline void twist::set_angular_y(float value) {
-  _internal_set_angular_y(value);
-  // @@protoc_insertion_point(field_set:RatSim.twist.angular_y)
-}
-inline float twist::_internal_angular_y() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.angular_y_;
-}
-inline void twist::_internal_set_angular_y(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.angular_y_ = value;
-}
-
-// float angular_z = 6;
-inline void twist::clear_angular_z() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.angular_z_ = 0;
-}
-inline float twist::angular_z() const {
-  // @@protoc_insertion_point(field_get:RatSim.twist.angular_z)
-  return _internal_angular_z();
-}
-inline void twist::set_angular_z(float value) {
-  _internal_set_angular_z(value);
-  // @@protoc_insertion_point(field_set:RatSim.twist.angular_z)
-}
-inline float twist::_internal_angular_z() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.angular_z_;
-}
-inline void twist::_internal_set_angular_z(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.angular_z_ = value;
-}
-
-// -------------------------------------------------------------------
-
 // LidarPoint
 
 // float x = 1;
@@ -5144,6 +5362,154 @@ DepthCameraImageData::_internal_data() const {
 inline ::google::protobuf::RepeatedField<float>* DepthCameraImageData::_internal_mutable_data() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.data_;
+}
+
+// -------------------------------------------------------------------
+
+// DronePose
+
+// string name = 1;
+inline void DronePose::clear_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& DronePose::name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:RatSim.DronePose.name)
+  return _internal_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void DronePose::set_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:RatSim.DronePose.name)
+}
+inline std::string* DronePose::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:RatSim.DronePose.name)
+  return _s;
+}
+inline const std::string& DronePose::_internal_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.name_.Get();
+}
+inline void DronePose::_internal_set_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.Set(value, GetArena());
+}
+inline std::string* DronePose::_internal_mutable_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.name_.Mutable( GetArena());
+}
+inline std::string* DronePose::release_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:RatSim.DronePose.name)
+  return _impl_.name_.Release();
+}
+inline void DronePose::set_allocated_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:RatSim.DronePose.name)
+}
+
+// .RatSim.Pose pose = 2;
+inline bool DronePose::has_pose() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.pose_ != nullptr);
+  return value;
+}
+inline void DronePose::clear_pose() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.pose_ != nullptr) _impl_.pose_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::RatSim::Pose& DronePose::_internal_pose() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::RatSim::Pose* p = _impl_.pose_;
+  return p != nullptr ? *p : reinterpret_cast<const ::RatSim::Pose&>(::RatSim::_Pose_default_instance_);
+}
+inline const ::RatSim::Pose& DronePose::pose() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:RatSim.DronePose.pose)
+  return _internal_pose();
+}
+inline void DronePose::unsafe_arena_set_allocated_pose(::RatSim::Pose* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.pose_);
+  }
+  _impl_.pose_ = reinterpret_cast<::RatSim::Pose*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:RatSim.DronePose.pose)
+}
+inline ::RatSim::Pose* DronePose::release_pose() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::RatSim::Pose* released = _impl_.pose_;
+  _impl_.pose_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::RatSim::Pose* DronePose::unsafe_arena_release_pose() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:RatSim.DronePose.pose)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::RatSim::Pose* temp = _impl_.pose_;
+  _impl_.pose_ = nullptr;
+  return temp;
+}
+inline ::RatSim::Pose* DronePose::_internal_mutable_pose() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.pose_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::RatSim::Pose>(GetArena());
+    _impl_.pose_ = reinterpret_cast<::RatSim::Pose*>(p);
+  }
+  return _impl_.pose_;
+}
+inline ::RatSim::Pose* DronePose::mutable_pose() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::RatSim::Pose* _msg = _internal_mutable_pose();
+  // @@protoc_insertion_point(field_mutable:RatSim.DronePose.pose)
+  return _msg;
+}
+inline void DronePose::set_allocated_pose(::RatSim::Pose* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.pose_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.pose_ = reinterpret_cast<::RatSim::Pose*>(value);
+  // @@protoc_insertion_point(field_set_allocated:RatSim.DronePose.pose)
 }
 
 #ifdef __GNUC__

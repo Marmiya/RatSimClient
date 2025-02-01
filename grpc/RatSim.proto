@@ -23,6 +23,24 @@ message PointCloudWithColor {
 message EmptyRequest {
 }
 
+message Pose {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+  float roll = 4;
+  float pitch = 5;
+  float yaw = 6;
+}
+
+message twist{
+  float linear_x = 1;
+  float linear_y = 2;
+  float linear_z = 3;
+  float angular_x = 4;
+  float angular_y = 5;
+  float angular_z = 6;
+}
+
 message Odometry {
   Pose pose = 1;
   twist twist = 2;
@@ -51,24 +69,6 @@ message MeshDataWithOdom {
 }
 
 // Lidar:
-message Pose {
-  float x = 1;
-  float y = 2;
-  float z = 3;
-  float roll = 4;
-  float pitch = 5;
-  float yaw = 6;
-}
-
-message twist{
-  float linear_x = 1;
-  float linear_y = 2;
-  float linear_z = 3;
-  float angular_x = 4;
-  float angular_y = 5;
-  float angular_z = 6;
-}
-
 message LidarPoint {
   float x = 1;
   float y = 2;
@@ -94,6 +94,13 @@ message DepthCameraImageData {
   repeated float data = 1;
 }
 
+// Drone:
+message DronePose {
+  string name = 1;
+  Pose pose = 2;
+}
+  
+
 // Services:
 service LidarService {
   rpc GetLiDARData (RobotName) returns (LidarData);
@@ -113,4 +120,9 @@ service DepthCameraService {
   rpc GetDepthCameraPointData (EmptyRequest) returns (DepthCameraPointData);
   rpc GetDepthCameraImageData (EmptyRequest) returns (DepthCameraImageData);
   rpc GetDepthCameraOdom (EmptyRequest) returns (Odometry);
+}
+
+service DroneService {
+  rpc GetDroneOdom (RobotName) returns (Odometry);
+  rpc SendDronePose (DronePose) returns (Status);
 }

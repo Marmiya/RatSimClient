@@ -1484,6 +1484,370 @@ class DepthCameraService final {
   typedef WithStreamedUnaryMethod_GetDepthCameraPointData<WithStreamedUnaryMethod_GetDepthCameraImageData<WithStreamedUnaryMethod_GetDepthCameraOdom<Service > > > StreamedService;
 };
 
+class DroneService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "RatSim.DroneService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetDroneOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetDroneOdomRaw(context, request, cq));
+    }
+    virtual ::grpc::Status SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> AsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(AsyncSendDronePoseRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> PrepareAsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(PrepareAsyncSendDronePoseRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetDroneOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetDroneOdomRaw(context, request, cq));
+    }
+    ::grpc::Status SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> AsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(AsyncSendDronePoseRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> PrepareAsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(PrepareAsyncSendDronePoseRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
+      void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) override;
+      void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GetDroneOdom_;
+    const ::grpc::internal::RpcMethod rpcmethod_SendDronePose_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status GetDroneOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
+    virtual ::grpc::Status SendDronePose(::grpc::ServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDroneOdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendDronePose(::grpc::ServerContext* context, ::RatSim::DronePose* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetDroneOdom<WithAsyncMethod_SendDronePose<Service > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) { return this->GetDroneOdom(context, request, response); }));}
+    void SetMessageAllocatorFor_GetDroneOdom(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::Odometry>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDroneOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response) { return this->SendDronePose(context, request, response); }));}
+    void SetMessageAllocatorFor_SendDronePose(
+        ::grpc::MessageAllocator< ::RatSim::DronePose, ::RatSim::Status>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendDronePose(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_GetDroneOdom<WithCallbackMethod_SendDronePose<Service > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDroneOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendDronePose(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDroneOdom(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDroneOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendDronePose(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendDronePose(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::Odometry>* streamer) {
+                       return this->StreamedGetDroneOdom(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetDroneOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::Odometry>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::DronePose, ::RatSim::Status>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::DronePose, ::RatSim::Status>* streamer) {
+                       return this->StreamedSendDronePose(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSendDronePose(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::DronePose,::RatSim::Status>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_GetDroneOdom<WithStreamedUnaryMethod_SendDronePose<Service > > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_GetDroneOdom<WithStreamedUnaryMethod_SendDronePose<Service > > StreamedService;
+};
+
 }  // namespace RatSim
 
 

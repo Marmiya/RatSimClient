@@ -1,11 +1,27 @@
 <launch>
 
-  <arg name="robot_name" default="Husky"/>
+  <!-- <arg name="robot_name" default="Husky"/>
   <arg name="rate" default="30"/>
   <node name="lidar_publisher" pkg="RatSim" type="ratsim_lidar" output="screen">
       <param name="rate" value="$(arg rate)"/>
       <param name="robot_name" value="$(arg robot_name)"/>
   </node>
 
-  <node type="rviz" name="rviz_ratsim" pkg="rviz" args="-d $(find RatSim)/Rviz/Test.rviz"/>
+  <node type="rviz" name="rviz_ratsim" pkg="rviz" args="-d $(find RatSim)/Rviz/Test.rviz"/> -->
+
+  <node pkg="RatSim" type="MoveTest.py" name="MoveTest" output="screen">
+      <!-- Server connection -->
+      <param name="server_address" value="172.31.178.18:50996"/>
+      <param name="drone_name" value="Mavic"/>
+      <param name="rate" value="10"/>
+      
+      <!-- Fixed pose parameters -->
+      <param name="x" value="100.0"/>  <!-- 1 meter in cm -->
+      <param name="y" value="0.0"/>
+      <param name="z" value="200.0"/>  <!-- 2 meters in cm -->
+      <param name="roll" value="0.0"/>
+      <param name="pitch" value="0.0"/>
+      <param name="yaw" value="0.0"/>
+  </node>
+
 </launch>

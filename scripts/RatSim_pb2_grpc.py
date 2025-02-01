@@ -486,3 +486,118 @@ class DepthCameraService(object):
             timeout,
             metadata,
             _registered_method=True)
+
+
+class DroneServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.GetDroneOdom = channel.unary_unary(
+                '/RatSim.DroneService/GetDroneOdom',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.Odometry.FromString,
+                _registered_method=True)
+        self.SendDronePose = channel.unary_unary(
+                '/RatSim.DroneService/SendDronePose',
+                request_serializer=RatSim__pb2.DronePose.SerializeToString,
+                response_deserializer=RatSim__pb2.Status.FromString,
+                _registered_method=True)
+
+
+class DroneServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def GetDroneOdom(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SendDronePose(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_DroneServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'GetDroneOdom': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDroneOdom,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.Odometry.SerializeToString,
+            ),
+            'SendDronePose': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendDronePose,
+                    request_deserializer=RatSim__pb2.DronePose.FromString,
+                    response_serializer=RatSim__pb2.Status.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'RatSim.DroneService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('RatSim.DroneService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class DroneService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def GetDroneOdom(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.DroneService/GetDroneOdom',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.Odometry.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SendDronePose(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.DroneService/SendDronePose',
+            RatSim__pb2.DronePose.SerializeToString,
+            RatSim__pb2.Status.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
