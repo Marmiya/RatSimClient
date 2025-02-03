@@ -166,6 +166,460 @@ LidarService::Service::~Service() {
 }
 
 
+static const char* DepthCameraService_method_names[] = {
+  "/RatSim.DepthCameraService/GetDepthCameraPointData",
+  "/RatSim.DepthCameraService/GetDepthCameraImageData",
+  "/RatSim.DepthCameraService/GetDepthCameraOdom",
+};
+
+std::unique_ptr< DepthCameraService::Stub> DepthCameraService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< DepthCameraService::Stub> stub(new DepthCameraService::Stub(channel, options));
+  return stub;
+}
+
+DepthCameraService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_GetDepthCameraPointData_(DepthCameraService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDepthCameraImageData_(DepthCameraService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDepthCameraOdom_(DepthCameraService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status DepthCameraService::Stub::GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::DepthCameraPointData* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::DepthCameraPointData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDepthCameraPointData_, context, request, response);
+}
+
+void DepthCameraService::Stub::async::GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::DepthCameraPointData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraPointData_, context, request, response, std::move(f));
+}
+
+void DepthCameraService::Stub::async::GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraPointData_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* DepthCameraService::Stub::PrepareAsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::DepthCameraPointData, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDepthCameraPointData_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* DepthCameraService::Stub::AsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetDepthCameraPointDataRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status DepthCameraService::Stub::GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::DepthCameraImageData* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::DepthCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDepthCameraImageData_, context, request, response);
+}
+
+void DepthCameraService::Stub::async::GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::DepthCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraImageData_, context, request, response, std::move(f));
+}
+
+void DepthCameraService::Stub::async::GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraImageData_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* DepthCameraService::Stub::PrepareAsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::DepthCameraImageData, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDepthCameraImageData_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* DepthCameraService::Stub::AsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetDepthCameraImageDataRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status DepthCameraService::Stub::GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDepthCameraOdom_, context, request, response);
+}
+
+void DepthCameraService::Stub::async::GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraOdom_, context, request, response, std::move(f));
+}
+
+void DepthCameraService::Stub::async::GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraOdom_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DepthCameraService::Stub::PrepareAsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDepthCameraOdom_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DepthCameraService::Stub::AsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetDepthCameraOdomRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+DepthCameraService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DepthCameraService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DepthCameraService::Service, ::RatSim::RobotName, ::RatSim::DepthCameraPointData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DepthCameraService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::RobotName* req,
+             ::RatSim::DepthCameraPointData* resp) {
+               return service->GetDepthCameraPointData(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DepthCameraService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DepthCameraService::Service, ::RatSim::RobotName, ::RatSim::DepthCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DepthCameraService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::RobotName* req,
+             ::RatSim::DepthCameraImageData* resp) {
+               return service->GetDepthCameraImageData(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DepthCameraService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DepthCameraService::Service, ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DepthCameraService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::RobotName* req,
+             ::RatSim::Odometry* resp) {
+               return service->GetDepthCameraOdom(ctx, req, resp);
+             }, this)));
+}
+
+DepthCameraService::Service::~Service() {
+}
+
+::grpc::Status DepthCameraService::Service::GetDepthCameraPointData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status DepthCameraService::Service::GetDepthCameraImageData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status DepthCameraService::Service::GetDepthCameraOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
+static const char* RGBCameraService_method_names[] = {
+  "/RatSim.RGBCameraService/GetRGBCameraImageData",
+  "/RatSim.RGBCameraService/GetRGBCameraOdom",
+};
+
+std::unique_ptr< RGBCameraService::Stub> RGBCameraService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< RGBCameraService::Stub> stub(new RGBCameraService::Stub(channel, options));
+  return stub;
+}
+
+RGBCameraService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_GetRGBCameraImageData_(RGBCameraService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRGBCameraOdom_(RGBCameraService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status RGBCameraService::Stub::GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::RGBCameraImageData* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::RGBCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetRGBCameraImageData_, context, request, response);
+}
+
+void RGBCameraService::Stub::async::GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::RGBCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetRGBCameraImageData_, context, request, response, std::move(f));
+}
+
+void RGBCameraService::Stub::async::GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetRGBCameraImageData_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>* RGBCameraService::Stub::PrepareAsyncGetRGBCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::RGBCameraImageData, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetRGBCameraImageData_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>* RGBCameraService::Stub::AsyncGetRGBCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetRGBCameraImageDataRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RGBCameraService::Stub::GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetRGBCameraOdom_, context, request, response);
+}
+
+void RGBCameraService::Stub::async::GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetRGBCameraOdom_, context, request, response, std::move(f));
+}
+
+void RGBCameraService::Stub::async::GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetRGBCameraOdom_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* RGBCameraService::Stub::PrepareAsyncGetRGBCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetRGBCameraOdom_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* RGBCameraService::Stub::AsyncGetRGBCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetRGBCameraOdomRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+RGBCameraService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RGBCameraService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RGBCameraService::Service, ::RatSim::RobotName, ::RatSim::RGBCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RGBCameraService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::RobotName* req,
+             ::RatSim::RGBCameraImageData* resp) {
+               return service->GetRGBCameraImageData(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RGBCameraService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RGBCameraService::Service, ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RGBCameraService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::RobotName* req,
+             ::RatSim::Odometry* resp) {
+               return service->GetRGBCameraOdom(ctx, req, resp);
+             }, this)));
+}
+
+RGBCameraService::Service::~Service() {
+}
+
+::grpc::Status RGBCameraService::Service::GetRGBCameraImageData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RGBCameraService::Service::GetRGBCameraOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
+static const char* DroneService_method_names[] = {
+  "/RatSim.DroneService/GetDroneOdom",
+  "/RatSim.DroneService/SendDronePose",
+};
+
+std::unique_ptr< DroneService::Stub> DroneService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< DroneService::Stub> stub(new DroneService::Stub(channel, options));
+  return stub;
+}
+
+DroneService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_GetDroneOdom_(DroneService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SendDronePose_(DroneService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status DroneService::Stub::GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDroneOdom_, context, request, response);
+}
+
+void DroneService::Stub::async::GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDroneOdom_, context, request, response, std::move(f));
+}
+
+void DroneService::Stub::async::GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDroneOdom_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DroneService::Stub::PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDroneOdom_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DroneService::Stub::AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetDroneOdomRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status DroneService::Stub::SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SendDronePose_, context, request, response);
+}
+
+void DroneService::Stub::async::SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendDronePose_, context, request, response, std::move(f));
+}
+
+void DroneService::Stub::async::SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendDronePose_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Status>* DroneService::Stub::PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Status, ::RatSim::DronePose, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SendDronePose_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Status>* DroneService::Stub::AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSendDronePoseRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+DroneService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DroneService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DroneService::Service, ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DroneService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::RobotName* req,
+             ::RatSim::Odometry* resp) {
+               return service->GetDroneOdom(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DroneService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DroneService::Service, ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DroneService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::DronePose* req,
+             ::RatSim::Status* resp) {
+               return service->SendDronePose(ctx, req, resp);
+             }, this)));
+}
+
+DroneService::Service::~Service() {
+}
+
+::grpc::Status DroneService::Service::GetDroneOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status DroneService::Service::SendDronePose(::grpc::ServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
+static const char* CarService_method_names[] = {
+  "/RatSim.CarService/GetCarOdom",
+  "/RatSim.CarService/SendCarPose",
+};
+
+std::unique_ptr< CarService::Stub> CarService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< CarService::Stub> stub(new CarService::Stub(channel, options));
+  return stub;
+}
+
+CarService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_GetCarOdom_(CarService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SendCarPose_(CarService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status CarService::Stub::GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetCarOdom_, context, request, response);
+}
+
+void CarService::Stub::async::GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetCarOdom_, context, request, response, std::move(f));
+}
+
+void CarService::Stub::async::GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetCarOdom_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* CarService::Stub::PrepareAsyncGetCarOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetCarOdom_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* CarService::Stub::AsyncGetCarOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetCarOdomRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status CarService::Stub::SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SendCarPose_, context, request, response);
+}
+
+void CarService::Stub::async::SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendCarPose_, context, request, response, std::move(f));
+}
+
+void CarService::Stub::async::SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendCarPose_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Status>* CarService::Stub::PrepareAsyncSendCarPoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Status, ::RatSim::DronePose, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SendCarPose_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::RatSim::Status>* CarService::Stub::AsyncSendCarPoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSendCarPoseRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+CarService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      CarService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< CarService::Service, ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](CarService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::RobotName* req,
+             ::RatSim::Odometry* resp) {
+               return service->GetCarOdom(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      CarService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< CarService::Service, ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](CarService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::RatSim::DronePose* req,
+             ::RatSim::Status* resp) {
+               return service->SendCarPose(ctx, req, resp);
+             }, this)));
+}
+
+CarService::Service::~Service() {
+}
+
+::grpc::Status CarService::Service::GetCarOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status CarService::Service::SendCarPose(::grpc::ServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
 static const char* MeshService_method_names[] = {
   "/RatSim.MeshService/SendMesh",
 };
@@ -281,254 +735,6 @@ PointCloudService::Service::~Service() {
 }
 
 ::grpc::Status PointCloudService::Service::SendPointCloudWithColor(::grpc::ServerContext* context, const ::RatSim::PointCloudWithColor* request, ::RatSim::Status* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-
-static const char* DepthCameraService_method_names[] = {
-  "/RatSim.DepthCameraService/GetDepthCameraPointData",
-  "/RatSim.DepthCameraService/GetDepthCameraImageData",
-  "/RatSim.DepthCameraService/GetDepthCameraOdom",
-};
-
-std::unique_ptr< DepthCameraService::Stub> DepthCameraService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
-  (void)options;
-  std::unique_ptr< DepthCameraService::Stub> stub(new DepthCameraService::Stub(channel, options));
-  return stub;
-}
-
-DepthCameraService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_GetDepthCameraPointData_(DepthCameraService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDepthCameraImageData_(DepthCameraService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDepthCameraOdom_(DepthCameraService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  {}
-
-::grpc::Status DepthCameraService::Stub::GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::DepthCameraPointData* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDepthCameraPointData_, context, request, response);
-}
-
-void DepthCameraService::Stub::async::GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraPointData_, context, request, response, std::move(f));
-}
-
-void DepthCameraService::Stub::async::GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraPointData_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* DepthCameraService::Stub::PrepareAsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::DepthCameraPointData, ::RatSim::EmptyRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDepthCameraPointData_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* DepthCameraService::Stub::AsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetDepthCameraPointDataRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::Status DepthCameraService::Stub::GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::DepthCameraImageData* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDepthCameraImageData_, context, request, response);
-}
-
-void DepthCameraService::Stub::async::GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraImageData_, context, request, response, std::move(f));
-}
-
-void DepthCameraService::Stub::async::GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraImageData_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* DepthCameraService::Stub::PrepareAsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::DepthCameraImageData, ::RatSim::EmptyRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDepthCameraImageData_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* DepthCameraService::Stub::AsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetDepthCameraImageDataRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::Status DepthCameraService::Stub::GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::Odometry* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::EmptyRequest, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDepthCameraOdom_, context, request, response);
-}
-
-void DepthCameraService::Stub::async::GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::EmptyRequest, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraOdom_, context, request, response, std::move(f));
-}
-
-void DepthCameraService::Stub::async::GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDepthCameraOdom_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DepthCameraService::Stub::PrepareAsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::EmptyRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDepthCameraOdom_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DepthCameraService::Stub::AsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetDepthCameraOdomRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-DepthCameraService::Service::Service() {
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      DepthCameraService_method_names[0],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< DepthCameraService::Service, ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](DepthCameraService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::RatSim::EmptyRequest* req,
-             ::RatSim::DepthCameraPointData* resp) {
-               return service->GetDepthCameraPointData(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      DepthCameraService_method_names[1],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< DepthCameraService::Service, ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](DepthCameraService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::RatSim::EmptyRequest* req,
-             ::RatSim::DepthCameraImageData* resp) {
-               return service->GetDepthCameraImageData(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      DepthCameraService_method_names[2],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< DepthCameraService::Service, ::RatSim::EmptyRequest, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](DepthCameraService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::RatSim::EmptyRequest* req,
-             ::RatSim::Odometry* resp) {
-               return service->GetDepthCameraOdom(ctx, req, resp);
-             }, this)));
-}
-
-DepthCameraService::Service::~Service() {
-}
-
-::grpc::Status DepthCameraService::Service::GetDepthCameraPointData(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status DepthCameraService::Service::GetDepthCameraImageData(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status DepthCameraService::Service::GetDepthCameraOdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-
-static const char* DroneService_method_names[] = {
-  "/RatSim.DroneService/GetDroneOdom",
-  "/RatSim.DroneService/SendDronePose",
-};
-
-std::unique_ptr< DroneService::Stub> DroneService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
-  (void)options;
-  std::unique_ptr< DroneService::Stub> stub(new DroneService::Stub(channel, options));
-  return stub;
-}
-
-DroneService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_GetDroneOdom_(DroneService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SendDronePose_(DroneService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  {}
-
-::grpc::Status DroneService::Stub::GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDroneOdom_, context, request, response);
-}
-
-void DroneService::Stub::async::GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDroneOdom_, context, request, response, std::move(f));
-}
-
-void DroneService::Stub::async::GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDroneOdom_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DroneService::Stub::PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Odometry, ::RatSim::RobotName, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDroneOdom_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* DroneService::Stub::AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetDroneOdomRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::Status DroneService::Stub::SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SendDronePose_, context, request, response);
-}
-
-void DroneService::Stub::async::SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendDronePose_, context, request, response, std::move(f));
-}
-
-void DroneService::Stub::async::SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SendDronePose_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Status>* DroneService::Stub::PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RatSim::Status, ::RatSim::DronePose, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SendDronePose_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::RatSim::Status>* DroneService::Stub::AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncSendDronePoseRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-DroneService::Service::Service() {
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      DroneService_method_names[0],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< DroneService::Service, ::RatSim::RobotName, ::RatSim::Odometry, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](DroneService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::RatSim::RobotName* req,
-             ::RatSim::Odometry* resp) {
-               return service->GetDroneOdom(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      DroneService_method_names[1],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< DroneService::Service, ::RatSim::DronePose, ::RatSim::Status, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](DroneService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::RatSim::DronePose* req,
-             ::RatSim::Status* resp) {
-               return service->SendDronePose(ctx, req, resp);
-             }, this)));
-}
-
-DroneService::Service::~Service() {
-}
-
-::grpc::Status DroneService::Service::GetDroneOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status DroneService::Service::SendDronePose(::grpc::ServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response) {
   (void) context;
   (void) request;
   (void) response;

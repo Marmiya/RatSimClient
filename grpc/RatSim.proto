@@ -94,6 +94,26 @@ message DepthCameraImageData {
   repeated float data = 1;
 }
 
+// RGB Camera:
+message RGBCameraImageData {
+  uint32 width = 1;
+  uint32 height = 2;
+  bytes data = 3;         // Raw RGB data or compressed image data
+  enum Format {
+    RGB = 0;              // Raw RGB format (3 bytes per pixel)
+    BGR = 1;              // Raw BGR format (3 bytes per pixel)
+    JPEG = 2;             // JPEG compressed
+    PNG = 3;              // PNG compressed
+  }
+  Format format = 4;       // Image format
+  uint32 timestamp = 5;    // todo: it's useless for now
+
+  // Optional fields for additional metadata
+  optional uint32 bytes_per_pixel = 6;  // Usually 3 for RGB/BGR
+  optional uint32 stride = 7;           // Bytes per row (for alignment)
+  optional bool is_compressed = 8;      // Whether data is compressed
+}
+
 // Drone:
 message DronePose {
   string name = 1;
@@ -103,9 +123,30 @@ message DronePose {
 
 // Services:
 service LidarService {
-  rpc GetLiDARData (RobotName) returns (LidarData);
-  rpc GetLiDAROdom (RobotName) returns (Odometry);
+  rpc GetLiDARData (RobotName) returns (LidarData); // todo
+  rpc GetLiDAROdom (RobotName) returns (Odometry); // todo
   rpc GetLiDARDataAndOdom (RobotName) returns (LidarDataAndOdom);
+}
+
+service DepthCameraService {
+  rpc GetDepthCameraPointData (RobotName) returns (DepthCameraPointData);
+  rpc GetDepthCameraImageData (RobotName) returns (DepthCameraImageData); // todo: size?
+  rpc GetDepthCameraOdom (RobotName) returns (Odometry);
+}
+
+service RGBCameraService {
+  rpc GetRGBCameraImageData (RobotName) returns (RGBCameraImageData);
+  rpc GetRGBCameraOdom (RobotName) returns (Odometry);
+}
+
+service DroneService {
+  rpc GetDroneOdom (RobotName) returns (Odometry);
+  rpc SendDronePose (DronePose) returns (Status);
+}
+
+service CarService {
+  rpc GetCarOdom (RobotName) returns (Odometry);
+  rpc SendCarPose (DronePose) returns (Status);
 }
 
 service MeshService {
@@ -114,15 +155,4 @@ service MeshService {
 
 service PointCloudService {
   rpc SendPointCloudWithColor (PointCloudWithColor) returns (Status);
-}
-
-service DepthCameraService {
-  rpc GetDepthCameraPointData (EmptyRequest) returns (DepthCameraPointData);
-  rpc GetDepthCameraImageData (EmptyRequest) returns (DepthCameraImageData);
-  rpc GetDepthCameraOdom (EmptyRequest) returns (Odometry);
-}
-
-service DroneService {
-  rpc GetDroneOdom (RobotName) returns (Odometry);
-  rpc SendDronePose (DronePose) returns (Status);
 }

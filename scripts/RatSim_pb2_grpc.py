@@ -57,13 +57,15 @@ class LidarServiceServicer(object):
     """
 
     def GetLiDARData(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """todo
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def GetLiDAROdom(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """todo
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -175,6 +177,510 @@ class LidarService(object):
             '/RatSim.LidarService/GetLiDARDataAndOdom',
             RatSim__pb2.RobotName.SerializeToString,
             RatSim__pb2.LidarDataAndOdom.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class DepthCameraServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.GetDepthCameraPointData = channel.unary_unary(
+                '/RatSim.DepthCameraService/GetDepthCameraPointData',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.DepthCameraPointData.FromString,
+                _registered_method=True)
+        self.GetDepthCameraImageData = channel.unary_unary(
+                '/RatSim.DepthCameraService/GetDepthCameraImageData',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.DepthCameraImageData.FromString,
+                _registered_method=True)
+        self.GetDepthCameraOdom = channel.unary_unary(
+                '/RatSim.DepthCameraService/GetDepthCameraOdom',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.Odometry.FromString,
+                _registered_method=True)
+
+
+class DepthCameraServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def GetDepthCameraPointData(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetDepthCameraImageData(self, request, context):
+        """todo: size?
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetDepthCameraOdom(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_DepthCameraServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'GetDepthCameraPointData': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDepthCameraPointData,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.DepthCameraPointData.SerializeToString,
+            ),
+            'GetDepthCameraImageData': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDepthCameraImageData,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.DepthCameraImageData.SerializeToString,
+            ),
+            'GetDepthCameraOdom': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDepthCameraOdom,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.Odometry.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'RatSim.DepthCameraService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('RatSim.DepthCameraService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class DepthCameraService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def GetDepthCameraPointData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.DepthCameraService/GetDepthCameraPointData',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.DepthCameraPointData.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetDepthCameraImageData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.DepthCameraService/GetDepthCameraImageData',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.DepthCameraImageData.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetDepthCameraOdom(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.DepthCameraService/GetDepthCameraOdom',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.Odometry.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class RGBCameraServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.GetRGBCameraImageData = channel.unary_unary(
+                '/RatSim.RGBCameraService/GetRGBCameraImageData',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.RGBCameraImageData.FromString,
+                _registered_method=True)
+        self.GetRGBCameraOdom = channel.unary_unary(
+                '/RatSim.RGBCameraService/GetRGBCameraOdom',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.Odometry.FromString,
+                _registered_method=True)
+
+
+class RGBCameraServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def GetRGBCameraImageData(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetRGBCameraOdom(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_RGBCameraServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'GetRGBCameraImageData': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetRGBCameraImageData,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.RGBCameraImageData.SerializeToString,
+            ),
+            'GetRGBCameraOdom': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetRGBCameraOdom,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.Odometry.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'RatSim.RGBCameraService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('RatSim.RGBCameraService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class RGBCameraService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def GetRGBCameraImageData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.RGBCameraService/GetRGBCameraImageData',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.RGBCameraImageData.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetRGBCameraOdom(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.RGBCameraService/GetRGBCameraOdom',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.Odometry.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class DroneServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.GetDroneOdom = channel.unary_unary(
+                '/RatSim.DroneService/GetDroneOdom',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.Odometry.FromString,
+                _registered_method=True)
+        self.SendDronePose = channel.unary_unary(
+                '/RatSim.DroneService/SendDronePose',
+                request_serializer=RatSim__pb2.DronePose.SerializeToString,
+                response_deserializer=RatSim__pb2.Status.FromString,
+                _registered_method=True)
+
+
+class DroneServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def GetDroneOdom(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SendDronePose(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_DroneServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'GetDroneOdom': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDroneOdom,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.Odometry.SerializeToString,
+            ),
+            'SendDronePose': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendDronePose,
+                    request_deserializer=RatSim__pb2.DronePose.FromString,
+                    response_serializer=RatSim__pb2.Status.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'RatSim.DroneService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('RatSim.DroneService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class DroneService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def GetDroneOdom(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.DroneService/GetDroneOdom',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.Odometry.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SendDronePose(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.DroneService/SendDronePose',
+            RatSim__pb2.DronePose.SerializeToString,
+            RatSim__pb2.Status.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class CarServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.GetCarOdom = channel.unary_unary(
+                '/RatSim.CarService/GetCarOdom',
+                request_serializer=RatSim__pb2.RobotName.SerializeToString,
+                response_deserializer=RatSim__pb2.Odometry.FromString,
+                _registered_method=True)
+        self.SendCarPose = channel.unary_unary(
+                '/RatSim.CarService/SendCarPose',
+                request_serializer=RatSim__pb2.DronePose.SerializeToString,
+                response_deserializer=RatSim__pb2.Status.FromString,
+                _registered_method=True)
+
+
+class CarServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def GetCarOdom(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SendCarPose(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_CarServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'GetCarOdom': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetCarOdom,
+                    request_deserializer=RatSim__pb2.RobotName.FromString,
+                    response_serializer=RatSim__pb2.Odometry.SerializeToString,
+            ),
+            'SendCarPose': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendCarPose,
+                    request_deserializer=RatSim__pb2.DronePose.FromString,
+                    response_serializer=RatSim__pb2.Status.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'RatSim.CarService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('RatSim.CarService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class CarService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def GetCarOdom(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.CarService/GetCarOdom',
+            RatSim__pb2.RobotName.SerializeToString,
+            RatSim__pb2.Odometry.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SendCarPose(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/RatSim.CarService/SendCarPose',
+            RatSim__pb2.DronePose.SerializeToString,
+            RatSim__pb2.Status.FromString,
             options,
             channel_credentials,
             insecure,
@@ -318,279 +824,6 @@ class PointCloudService(object):
             target,
             '/RatSim.PointCloudService/SendPointCloudWithColor',
             RatSim__pb2.PointCloudWithColor.SerializeToString,
-            RatSim__pb2.Status.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-
-class DepthCameraServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.GetDepthCameraPointData = channel.unary_unary(
-                '/RatSim.DepthCameraService/GetDepthCameraPointData',
-                request_serializer=RatSim__pb2.EmptyRequest.SerializeToString,
-                response_deserializer=RatSim__pb2.DepthCameraPointData.FromString,
-                _registered_method=True)
-        self.GetDepthCameraImageData = channel.unary_unary(
-                '/RatSim.DepthCameraService/GetDepthCameraImageData',
-                request_serializer=RatSim__pb2.EmptyRequest.SerializeToString,
-                response_deserializer=RatSim__pb2.DepthCameraImageData.FromString,
-                _registered_method=True)
-        self.GetDepthCameraOdom = channel.unary_unary(
-                '/RatSim.DepthCameraService/GetDepthCameraOdom',
-                request_serializer=RatSim__pb2.EmptyRequest.SerializeToString,
-                response_deserializer=RatSim__pb2.Odometry.FromString,
-                _registered_method=True)
-
-
-class DepthCameraServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def GetDepthCameraPointData(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetDepthCameraImageData(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetDepthCameraOdom(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_DepthCameraServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'GetDepthCameraPointData': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetDepthCameraPointData,
-                    request_deserializer=RatSim__pb2.EmptyRequest.FromString,
-                    response_serializer=RatSim__pb2.DepthCameraPointData.SerializeToString,
-            ),
-            'GetDepthCameraImageData': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetDepthCameraImageData,
-                    request_deserializer=RatSim__pb2.EmptyRequest.FromString,
-                    response_serializer=RatSim__pb2.DepthCameraImageData.SerializeToString,
-            ),
-            'GetDepthCameraOdom': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetDepthCameraOdom,
-                    request_deserializer=RatSim__pb2.EmptyRequest.FromString,
-                    response_serializer=RatSim__pb2.Odometry.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'RatSim.DepthCameraService', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('RatSim.DepthCameraService', rpc_method_handlers)
-
-
- # This class is part of an EXPERIMENTAL API.
-class DepthCameraService(object):
-    """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def GetDepthCameraPointData(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/RatSim.DepthCameraService/GetDepthCameraPointData',
-            RatSim__pb2.EmptyRequest.SerializeToString,
-            RatSim__pb2.DepthCameraPointData.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def GetDepthCameraImageData(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/RatSim.DepthCameraService/GetDepthCameraImageData',
-            RatSim__pb2.EmptyRequest.SerializeToString,
-            RatSim__pb2.DepthCameraImageData.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def GetDepthCameraOdom(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/RatSim.DepthCameraService/GetDepthCameraOdom',
-            RatSim__pb2.EmptyRequest.SerializeToString,
-            RatSim__pb2.Odometry.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-
-class DroneServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.GetDroneOdom = channel.unary_unary(
-                '/RatSim.DroneService/GetDroneOdom',
-                request_serializer=RatSim__pb2.RobotName.SerializeToString,
-                response_deserializer=RatSim__pb2.Odometry.FromString,
-                _registered_method=True)
-        self.SendDronePose = channel.unary_unary(
-                '/RatSim.DroneService/SendDronePose',
-                request_serializer=RatSim__pb2.DronePose.SerializeToString,
-                response_deserializer=RatSim__pb2.Status.FromString,
-                _registered_method=True)
-
-
-class DroneServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def GetDroneOdom(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def SendDronePose(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_DroneServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'GetDroneOdom': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetDroneOdom,
-                    request_deserializer=RatSim__pb2.RobotName.FromString,
-                    response_serializer=RatSim__pb2.Odometry.SerializeToString,
-            ),
-            'SendDronePose': grpc.unary_unary_rpc_method_handler(
-                    servicer.SendDronePose,
-                    request_deserializer=RatSim__pb2.DronePose.FromString,
-                    response_serializer=RatSim__pb2.Status.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'RatSim.DroneService', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('RatSim.DroneService', rpc_method_handlers)
-
-
- # This class is part of an EXPERIMENTAL API.
-class DroneService(object):
-    """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def GetDroneOdom(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/RatSim.DroneService/GetDroneOdom',
-            RatSim__pb2.RobotName.SerializeToString,
-            RatSim__pb2.Odometry.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def SendDronePose(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/RatSim.DroneService/SendDronePose',
-            RatSim__pb2.DronePose.SerializeToString,
             RatSim__pb2.Status.FromString,
             options,
             channel_credentials,

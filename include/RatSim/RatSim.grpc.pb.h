@@ -43,6 +43,7 @@ class LidarService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>> PrepareAsyncGetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarData>>(PrepareAsyncGetLiDARDataRaw(context, request, cq));
     }
+    // todo
     virtual ::grpc::Status GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetLiDAROdomRaw(context, request, cq));
@@ -50,6 +51,7 @@ class LidarService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetLiDAROdomRaw(context, request, cq));
     }
+    // todo
     virtual ::grpc::Status GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::LidarDataAndOdom* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>> AsyncGetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::LidarDataAndOdom>>(AsyncGetLiDARDataAndOdomRaw(context, request, cq));
@@ -62,8 +64,10 @@ class LidarService final {
       virtual ~async_interface() {}
       virtual void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetLiDARData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // todo
       virtual void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetLiDAROdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // todo
       virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetLiDARDataAndOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
@@ -139,7 +143,9 @@ class LidarService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status GetLiDARData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarData* response);
+    // todo
     virtual ::grpc::Status GetLiDAROdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
+    // todo
     virtual ::grpc::Status GetLiDARDataAndOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::LidarDataAndOdom* response);
   };
   template <class BaseClass>
@@ -547,6 +553,1622 @@ class LidarService final {
   typedef WithStreamedUnaryMethod_GetLiDARData<WithStreamedUnaryMethod_GetLiDAROdom<WithStreamedUnaryMethod_GetLiDARDataAndOdom<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
   typedef WithStreamedUnaryMethod_GetLiDARData<WithStreamedUnaryMethod_GetLiDAROdom<WithStreamedUnaryMethod_GetLiDARDataAndOdom<Service > > > StreamedService;
+};
+
+class DepthCameraService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "RatSim.DepthCameraService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::DepthCameraPointData* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>> AsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>>(AsyncGetDepthCameraPointDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>> PrepareAsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>>(PrepareAsyncGetDepthCameraPointDataRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::DepthCameraImageData* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>> AsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>>(AsyncGetDepthCameraImageDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>> PrepareAsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>>(PrepareAsyncGetDepthCameraImageDataRaw(context, request, cq));
+    }
+    // todo: size?
+    virtual ::grpc::Status GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetDepthCameraOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetDepthCameraOdomRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // todo: size?
+      virtual void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>* AsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>* PrepareAsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>* AsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>* PrepareAsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::DepthCameraPointData* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>> AsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>>(AsyncGetDepthCameraPointDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>> PrepareAsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>>(PrepareAsyncGetDepthCameraPointDataRaw(context, request, cq));
+    }
+    ::grpc::Status GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::DepthCameraImageData* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>> AsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>>(AsyncGetDepthCameraImageDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>> PrepareAsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>>(PrepareAsyncGetDepthCameraImageDataRaw(context, request, cq));
+    }
+    ::grpc::Status GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetDepthCameraOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetDepthCameraOdomRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response, std::function<void(::grpc::Status)>) override;
+      void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response, std::function<void(::grpc::Status)>) override;
+      void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
+      void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* AsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* PrepareAsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* AsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* PrepareAsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GetDepthCameraPointData_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetDepthCameraImageData_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetDepthCameraOdom_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response);
+    virtual ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response);
+    // todo: size?
+    virtual ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetDepthCameraPointData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetDepthCameraPointData() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_GetDepthCameraPointData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDepthCameraPointData(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::DepthCameraPointData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetDepthCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetDepthCameraImageData() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_GetDepthCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDepthCameraImageData(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::DepthCameraImageData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetDepthCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetDepthCameraOdom() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_GetDepthCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDepthCameraOdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetDepthCameraPointData<WithAsyncMethod_GetDepthCameraImageData<WithAsyncMethod_GetDepthCameraOdom<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetDepthCameraPointData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetDepthCameraPointData() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::DepthCameraPointData>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraPointData* response) { return this->GetDepthCameraPointData(context, request, response); }));}
+    void SetMessageAllocatorFor_GetDepthCameraPointData(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::DepthCameraPointData>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::DepthCameraPointData>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetDepthCameraPointData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDepthCameraPointData(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraPointData* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetDepthCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetDepthCameraImageData() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::DepthCameraImageData>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::DepthCameraImageData* response) { return this->GetDepthCameraImageData(context, request, response); }));}
+    void SetMessageAllocatorFor_GetDepthCameraImageData(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::DepthCameraImageData>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::DepthCameraImageData>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetDepthCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDepthCameraImageData(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraImageData* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetDepthCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetDepthCameraOdom() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) { return this->GetDepthCameraOdom(context, request, response); }));}
+    void SetMessageAllocatorFor_GetDepthCameraOdom(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::Odometry>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetDepthCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDepthCameraOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_GetDepthCameraPointData<WithCallbackMethod_GetDepthCameraImageData<WithCallbackMethod_GetDepthCameraOdom<Service > > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_GetDepthCameraPointData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetDepthCameraPointData() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_GetDepthCameraPointData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetDepthCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetDepthCameraImageData() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_GetDepthCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetDepthCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetDepthCameraOdom() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_GetDepthCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetDepthCameraPointData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetDepthCameraPointData() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_GetDepthCameraPointData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDepthCameraPointData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetDepthCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetDepthCameraImageData() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_GetDepthCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDepthCameraImageData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetDepthCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetDepthCameraOdom() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_GetDepthCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDepthCameraOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetDepthCameraPointData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetDepthCameraPointData() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDepthCameraPointData(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetDepthCameraPointData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDepthCameraPointData(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetDepthCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetDepthCameraImageData() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDepthCameraImageData(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetDepthCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDepthCameraImageData(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetDepthCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetDepthCameraOdom() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDepthCameraOdom(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetDepthCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDepthCameraOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetDepthCameraPointData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetDepthCameraPointData() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::DepthCameraPointData>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::DepthCameraPointData>* streamer) {
+                       return this->StreamedGetDepthCameraPointData(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetDepthCameraPointData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetDepthCameraPointData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::DepthCameraPointData>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetDepthCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetDepthCameraImageData() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::DepthCameraImageData>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::DepthCameraImageData>* streamer) {
+                       return this->StreamedGetDepthCameraImageData(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetDepthCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetDepthCameraImageData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::DepthCameraImageData>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetDepthCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetDepthCameraOdom() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::Odometry>* streamer) {
+                       return this->StreamedGetDepthCameraOdom(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetDepthCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetDepthCameraOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::Odometry>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_GetDepthCameraPointData<WithStreamedUnaryMethod_GetDepthCameraImageData<WithStreamedUnaryMethod_GetDepthCameraOdom<Service > > > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_GetDepthCameraPointData<WithStreamedUnaryMethod_GetDepthCameraImageData<WithStreamedUnaryMethod_GetDepthCameraOdom<Service > > > StreamedService;
+};
+
+class RGBCameraService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "RatSim.RGBCameraService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::RGBCameraImageData* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::RGBCameraImageData>> AsyncGetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::RGBCameraImageData>>(AsyncGetRGBCameraImageDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::RGBCameraImageData>> PrepareAsyncGetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::RGBCameraImageData>>(PrepareAsyncGetRGBCameraImageDataRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetRGBCameraOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetRGBCameraOdomRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::RGBCameraImageData>* AsyncGetRGBCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::RGBCameraImageData>* PrepareAsyncGetRGBCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetRGBCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetRGBCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::RGBCameraImageData* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>> AsyncGetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>>(AsyncGetRGBCameraImageDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>> PrepareAsyncGetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>>(PrepareAsyncGetRGBCameraImageDataRaw(context, request, cq));
+    }
+    ::grpc::Status GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetRGBCameraOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetRGBCameraOdomRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response, std::function<void(::grpc::Status)>) override;
+      void GetRGBCameraImageData(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
+      void GetRGBCameraOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>* AsyncGetRGBCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::RGBCameraImageData>* PrepareAsyncGetRGBCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetRGBCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetRGBCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GetRGBCameraImageData_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetRGBCameraOdom_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status GetRGBCameraImageData(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response);
+    virtual ::grpc::Status GetRGBCameraOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetRGBCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetRGBCameraImageData() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_GetRGBCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::RGBCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRGBCameraImageData(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::RGBCameraImageData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetRGBCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetRGBCameraOdom() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_GetRGBCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRGBCameraOdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetRGBCameraImageData<WithAsyncMethod_GetRGBCameraOdom<Service > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetRGBCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetRGBCameraImageData() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::RGBCameraImageData>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::RGBCameraImageData* response) { return this->GetRGBCameraImageData(context, request, response); }));}
+    void SetMessageAllocatorFor_GetRGBCameraImageData(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::RGBCameraImageData>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::RGBCameraImageData>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetRGBCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::RGBCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetRGBCameraImageData(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::RGBCameraImageData* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetRGBCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetRGBCameraOdom() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) { return this->GetRGBCameraOdom(context, request, response); }));}
+    void SetMessageAllocatorFor_GetRGBCameraOdom(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::Odometry>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetRGBCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetRGBCameraOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_GetRGBCameraImageData<WithCallbackMethod_GetRGBCameraOdom<Service > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_GetRGBCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetRGBCameraImageData() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_GetRGBCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::RGBCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetRGBCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetRGBCameraOdom() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_GetRGBCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetRGBCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetRGBCameraImageData() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_GetRGBCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::RGBCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRGBCameraImageData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetRGBCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetRGBCameraOdom() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_GetRGBCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRGBCameraOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetRGBCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetRGBCameraImageData() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetRGBCameraImageData(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetRGBCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::RGBCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetRGBCameraImageData(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetRGBCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetRGBCameraOdom() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetRGBCameraOdom(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetRGBCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRGBCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetRGBCameraOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetRGBCameraImageData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetRGBCameraImageData() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::RGBCameraImageData>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::RGBCameraImageData>* streamer) {
+                       return this->StreamedGetRGBCameraImageData(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetRGBCameraImageData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetRGBCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::RGBCameraImageData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetRGBCameraImageData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::RGBCameraImageData>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetRGBCameraOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetRGBCameraOdom() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::Odometry>* streamer) {
+                       return this->StreamedGetRGBCameraOdom(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetRGBCameraOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetRGBCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetRGBCameraOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::Odometry>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_GetRGBCameraImageData<WithStreamedUnaryMethod_GetRGBCameraOdom<Service > > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_GetRGBCameraImageData<WithStreamedUnaryMethod_GetRGBCameraOdom<Service > > StreamedService;
+};
+
+class DroneService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "RatSim.DroneService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetDroneOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetDroneOdomRaw(context, request, cq));
+    }
+    virtual ::grpc::Status SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> AsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(AsyncSendDronePoseRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> PrepareAsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(PrepareAsyncSendDronePoseRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetDroneOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetDroneOdomRaw(context, request, cq));
+    }
+    ::grpc::Status SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> AsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(AsyncSendDronePoseRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> PrepareAsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(PrepareAsyncSendDronePoseRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
+      void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) override;
+      void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GetDroneOdom_;
+    const ::grpc::internal::RpcMethod rpcmethod_SendDronePose_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status GetDroneOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
+    virtual ::grpc::Status SendDronePose(::grpc::ServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDroneOdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendDronePose(::grpc::ServerContext* context, ::RatSim::DronePose* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetDroneOdom<WithAsyncMethod_SendDronePose<Service > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) { return this->GetDroneOdom(context, request, response); }));}
+    void SetMessageAllocatorFor_GetDroneOdom(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::Odometry>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDroneOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response) { return this->SendDronePose(context, request, response); }));}
+    void SetMessageAllocatorFor_SendDronePose(
+        ::grpc::MessageAllocator< ::RatSim::DronePose, ::RatSim::Status>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendDronePose(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_GetDroneOdom<WithCallbackMethod_SendDronePose<Service > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDroneOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendDronePose(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDroneOdom(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDroneOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendDronePose(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendDronePose(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetDroneOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetDroneOdom() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::Odometry>* streamer) {
+                       return this->StreamedGetDroneOdom(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetDroneOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetDroneOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::Odometry>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SendDronePose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SendDronePose() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::DronePose, ::RatSim::Status>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::DronePose, ::RatSim::Status>* streamer) {
+                       return this->StreamedSendDronePose(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SendDronePose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSendDronePose(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::DronePose,::RatSim::Status>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_GetDroneOdom<WithStreamedUnaryMethod_SendDronePose<Service > > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_GetDroneOdom<WithStreamedUnaryMethod_SendDronePose<Service > > StreamedService;
+};
+
+class CarService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "RatSim.CarService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetCarOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetCarOdomRaw(context, request, cq));
+    }
+    virtual ::grpc::Status SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> AsyncSendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(AsyncSendCarPoseRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> PrepareAsyncSendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(PrepareAsyncSendCarPoseRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetCarOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetCarOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* AsyncSendCarPoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* PrepareAsyncSendCarPoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetCarOdomRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetCarOdomRaw(context, request, cq));
+    }
+    ::grpc::Status SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> AsyncSendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(AsyncSendCarPoseRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> PrepareAsyncSendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(PrepareAsyncSendCarPoseRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
+      void GetCarOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) override;
+      void SendCarPose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetCarOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetCarOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* AsyncSendCarPoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PrepareAsyncSendCarPoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GetCarOdom_;
+    const ::grpc::internal::RpcMethod rpcmethod_SendCarPose_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status GetCarOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
+    virtual ::grpc::Status SendCarPose(::grpc::ServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetCarOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetCarOdom() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_GetCarOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetCarOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetCarOdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SendCarPose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SendCarPose() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_SendCarPose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendCarPose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendCarPose(::grpc::ServerContext* context, ::RatSim::DronePose* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetCarOdom<WithAsyncMethod_SendCarPose<Service > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetCarOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetCarOdom() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) { return this->GetCarOdom(context, request, response); }));}
+    void SetMessageAllocatorFor_GetCarOdom(
+        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::Odometry>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetCarOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetCarOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetCarOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_SendCarPose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SendCarPose() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response) { return this->SendCarPose(context, request, response); }));}
+    void SetMessageAllocatorFor_SendCarPose(
+        ::grpc::MessageAllocator< ::RatSim::DronePose, ::RatSim::Status>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SendCarPose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendCarPose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendCarPose(
+      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_GetCarOdom<WithCallbackMethod_SendCarPose<Service > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_GetCarOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetCarOdom() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_GetCarOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetCarOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SendCarPose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SendCarPose() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_SendCarPose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendCarPose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetCarOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetCarOdom() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_GetCarOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetCarOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetCarOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SendCarPose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SendCarPose() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SendCarPose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendCarPose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSendCarPose(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetCarOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetCarOdom() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetCarOdom(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetCarOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetCarOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetCarOdom(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SendCarPose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SendCarPose() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendCarPose(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SendCarPose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SendCarPose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SendCarPose(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetCarOdom : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetCarOdom() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::RobotName, ::RatSim::Odometry>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::RobotName, ::RatSim::Odometry>* streamer) {
+                       return this->StreamedGetCarOdom(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetCarOdom() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetCarOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetCarOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::Odometry>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SendCarPose : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SendCarPose() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::RatSim::DronePose, ::RatSim::Status>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::RatSim::DronePose, ::RatSim::Status>* streamer) {
+                       return this->StreamedSendCarPose(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SendCarPose() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SendCarPose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSendCarPose(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::DronePose,::RatSim::Status>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_GetCarOdom<WithStreamedUnaryMethod_SendCarPose<Service > > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_GetCarOdom<WithStreamedUnaryMethod_SendCarPose<Service > > StreamedService;
 };
 
 class MeshService final {
@@ -961,891 +2583,6 @@ class PointCloudService final {
   typedef WithStreamedUnaryMethod_SendPointCloudWithColor<Service > StreamedUnaryService;
   typedef Service SplitStreamedService;
   typedef WithStreamedUnaryMethod_SendPointCloudWithColor<Service > StreamedService;
-};
-
-class DepthCameraService final {
- public:
-  static constexpr char const* service_full_name() {
-    return "RatSim.DepthCameraService";
-  }
-  class StubInterface {
-   public:
-    virtual ~StubInterface() {}
-    virtual ::grpc::Status GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::DepthCameraPointData* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>> AsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>>(AsyncGetDepthCameraPointDataRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>> PrepareAsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>>(PrepareAsyncGetDepthCameraPointDataRaw(context, request, cq));
-    }
-    virtual ::grpc::Status GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::DepthCameraImageData* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>> AsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>>(AsyncGetDepthCameraImageDataRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>> PrepareAsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>>(PrepareAsyncGetDepthCameraImageDataRaw(context, request, cq));
-    }
-    virtual ::grpc::Status GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::Odometry* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetDepthCameraOdomRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetDepthCameraOdomRaw(context, request, cq));
-    }
-    class async_interface {
-     public:
-      virtual ~async_interface() {}
-      virtual void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-    };
-    typedef class async_interface experimental_async_interface;
-    virtual class async_interface* async() { return nullptr; }
-    class async_interface* experimental_async() { return async(); }
-   private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>* AsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraPointData>* PrepareAsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>* AsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::DepthCameraImageData>* PrepareAsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) = 0;
-  };
-  class Stub final : public StubInterface {
-   public:
-    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::DepthCameraPointData* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>> AsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>>(AsyncGetDepthCameraPointDataRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>> PrepareAsyncGetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>>(PrepareAsyncGetDepthCameraPointDataRaw(context, request, cq));
-    }
-    ::grpc::Status GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::DepthCameraImageData* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>> AsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>>(AsyncGetDepthCameraImageDataRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>> PrepareAsyncGetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>>(PrepareAsyncGetDepthCameraImageDataRaw(context, request, cq));
-    }
-    ::grpc::Status GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::RatSim::Odometry* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetDepthCameraOdomRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetDepthCameraOdomRaw(context, request, cq));
-    }
-    class async final :
-      public StubInterface::async_interface {
-     public:
-      void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response, std::function<void(::grpc::Status)>) override;
-      void GetDepthCameraPointData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response, std::function<void(::grpc::Status)>) override;
-      void GetDepthCameraImageData(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
-      void GetDepthCameraOdom(::grpc::ClientContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
-     private:
-      friend class Stub;
-      explicit async(Stub* stub): stub_(stub) { }
-      Stub* stub() { return stub_; }
-      Stub* stub_;
-    };
-    class async* async() override { return &async_stub_; }
-
-   private:
-    std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* AsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraPointData>* PrepareAsyncGetDepthCameraPointDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* AsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::DepthCameraImageData>* PrepareAsyncGetDepthCameraImageDataRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetDepthCameraOdomRaw(::grpc::ClientContext* context, const ::RatSim::EmptyRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_GetDepthCameraPointData_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetDepthCameraImageData_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetDepthCameraOdom_;
-  };
-  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-
-  class Service : public ::grpc::Service {
-   public:
-    Service();
-    virtual ~Service();
-    virtual ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response);
-    virtual ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response);
-    virtual ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response);
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_GetDepthCameraPointData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetDepthCameraPointData() {
-      ::grpc::Service::MarkMethodAsync(0);
-    }
-    ~WithAsyncMethod_GetDepthCameraPointData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDepthCameraPointData(::grpc::ServerContext* context, ::RatSim::EmptyRequest* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::DepthCameraPointData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_GetDepthCameraImageData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetDepthCameraImageData() {
-      ::grpc::Service::MarkMethodAsync(1);
-    }
-    ~WithAsyncMethod_GetDepthCameraImageData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDepthCameraImageData(::grpc::ServerContext* context, ::RatSim::EmptyRequest* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::DepthCameraImageData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_GetDepthCameraOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetDepthCameraOdom() {
-      ::grpc::Service::MarkMethodAsync(2);
-    }
-    ~WithAsyncMethod_GetDepthCameraOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDepthCameraOdom(::grpc::ServerContext* context, ::RatSim::EmptyRequest* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_GetDepthCameraPointData<WithAsyncMethod_GetDepthCameraImageData<WithAsyncMethod_GetDepthCameraOdom<Service > > > AsyncService;
-  template <class BaseClass>
-  class WithCallbackMethod_GetDepthCameraPointData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetDepthCameraPointData() {
-      ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraPointData* response) { return this->GetDepthCameraPointData(context, request, response); }));}
-    void SetMessageAllocatorFor_GetDepthCameraPointData(
-        ::grpc::MessageAllocator< ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetDepthCameraPointData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDepthCameraPointData(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraPointData* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_GetDepthCameraImageData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetDepthCameraImageData() {
-      ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::DepthCameraImageData* response) { return this->GetDepthCameraImageData(context, request, response); }));}
-    void SetMessageAllocatorFor_GetDepthCameraImageData(
-        ::grpc::MessageAllocator< ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetDepthCameraImageData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDepthCameraImageData(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraImageData* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_GetDepthCameraOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetDepthCameraOdom() {
-      ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::Odometry>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::EmptyRequest* request, ::RatSim::Odometry* response) { return this->GetDepthCameraOdom(context, request, response); }));}
-    void SetMessageAllocatorFor_GetDepthCameraOdom(
-        ::grpc::MessageAllocator< ::RatSim::EmptyRequest, ::RatSim::Odometry>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::EmptyRequest, ::RatSim::Odometry>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetDepthCameraOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDepthCameraOdom(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
-  };
-  typedef WithCallbackMethod_GetDepthCameraPointData<WithCallbackMethod_GetDepthCameraImageData<WithCallbackMethod_GetDepthCameraOdom<Service > > > CallbackService;
-  typedef CallbackService ExperimentalCallbackService;
-  template <class BaseClass>
-  class WithGenericMethod_GetDepthCameraPointData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetDepthCameraPointData() {
-      ::grpc::Service::MarkMethodGeneric(0);
-    }
-    ~WithGenericMethod_GetDepthCameraPointData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_GetDepthCameraImageData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetDepthCameraImageData() {
-      ::grpc::Service::MarkMethodGeneric(1);
-    }
-    ~WithGenericMethod_GetDepthCameraImageData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_GetDepthCameraOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetDepthCameraOdom() {
-      ::grpc::Service::MarkMethodGeneric(2);
-    }
-    ~WithGenericMethod_GetDepthCameraOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetDepthCameraPointData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetDepthCameraPointData() {
-      ::grpc::Service::MarkMethodRaw(0);
-    }
-    ~WithRawMethod_GetDepthCameraPointData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDepthCameraPointData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetDepthCameraImageData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetDepthCameraImageData() {
-      ::grpc::Service::MarkMethodRaw(1);
-    }
-    ~WithRawMethod_GetDepthCameraImageData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDepthCameraImageData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetDepthCameraOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetDepthCameraOdom() {
-      ::grpc::Service::MarkMethodRaw(2);
-    }
-    ~WithRawMethod_GetDepthCameraOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDepthCameraOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetDepthCameraPointData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetDepthCameraPointData() {
-      ::grpc::Service::MarkMethodRawCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDepthCameraPointData(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetDepthCameraPointData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDepthCameraPointData(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetDepthCameraImageData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetDepthCameraImageData() {
-      ::grpc::Service::MarkMethodRawCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDepthCameraImageData(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetDepthCameraImageData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDepthCameraImageData(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetDepthCameraOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetDepthCameraOdom() {
-      ::grpc::Service::MarkMethodRawCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDepthCameraOdom(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetDepthCameraOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDepthCameraOdom(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetDepthCameraPointData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetDepthCameraPointData() {
-      ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::RatSim::EmptyRequest, ::RatSim::DepthCameraPointData>* streamer) {
-                       return this->StreamedGetDepthCameraPointData(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetDepthCameraPointData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetDepthCameraPointData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraPointData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetDepthCameraPointData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::EmptyRequest,::RatSim::DepthCameraPointData>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetDepthCameraImageData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetDepthCameraImageData() {
-      ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::RatSim::EmptyRequest, ::RatSim::DepthCameraImageData>* streamer) {
-                       return this->StreamedGetDepthCameraImageData(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetDepthCameraImageData() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetDepthCameraImageData(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::DepthCameraImageData* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetDepthCameraImageData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::EmptyRequest,::RatSim::DepthCameraImageData>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetDepthCameraOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetDepthCameraOdom() {
-      ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::EmptyRequest, ::RatSim::Odometry>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::RatSim::EmptyRequest, ::RatSim::Odometry>* streamer) {
-                       return this->StreamedGetDepthCameraOdom(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetDepthCameraOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetDepthCameraOdom(::grpc::ServerContext* /*context*/, const ::RatSim::EmptyRequest* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetDepthCameraOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::EmptyRequest,::RatSim::Odometry>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_GetDepthCameraPointData<WithStreamedUnaryMethod_GetDepthCameraImageData<WithStreamedUnaryMethod_GetDepthCameraOdom<Service > > > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetDepthCameraPointData<WithStreamedUnaryMethod_GetDepthCameraImageData<WithStreamedUnaryMethod_GetDepthCameraOdom<Service > > > StreamedService;
-};
-
-class DroneService final {
- public:
-  static constexpr char const* service_full_name() {
-    return "RatSim.DroneService";
-  }
-  class StubInterface {
-   public:
-    virtual ~StubInterface() {}
-    virtual ::grpc::Status GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> AsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(AsyncGetDroneOdomRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>> PrepareAsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>>(PrepareAsyncGetDroneOdomRaw(context, request, cq));
-    }
-    virtual ::grpc::Status SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> AsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(AsyncSendDronePoseRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>> PrepareAsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>>(PrepareAsyncSendDronePoseRaw(context, request, cq));
-    }
-    class async_interface {
-     public:
-      virtual ~async_interface() {}
-      virtual void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-    };
-    typedef class async_interface experimental_async_interface;
-    virtual class async_interface* async() { return nullptr; }
-    class async_interface* experimental_async() { return async(); }
-   private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Odometry>* PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RatSim::Status>* PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) = 0;
-  };
-  class Stub final : public StubInterface {
-   public:
-    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::RatSim::Odometry* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> AsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(AsyncGetDroneOdomRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>> PrepareAsyncGetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>>(PrepareAsyncGetDroneOdomRaw(context, request, cq));
-    }
-    ::grpc::Status SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::RatSim::Status* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> AsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(AsyncSendDronePoseRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>> PrepareAsyncSendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RatSim::Status>>(PrepareAsyncSendDronePoseRaw(context, request, cq));
-    }
-    class async final :
-      public StubInterface::async_interface {
-     public:
-      void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, std::function<void(::grpc::Status)>) override;
-      void GetDroneOdom(::grpc::ClientContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, std::function<void(::grpc::Status)>) override;
-      void SendDronePose(::grpc::ClientContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
-     private:
-      friend class Stub;
-      explicit async(Stub* stub): stub_(stub) { }
-      Stub* stub() { return stub_; }
-      Stub* stub_;
-    };
-    class async* async() override { return &async_stub_; }
-
-   private:
-    std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* AsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Odometry>* PrepareAsyncGetDroneOdomRaw(::grpc::ClientContext* context, const ::RatSim::RobotName& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* AsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::RatSim::Status>* PrepareAsyncSendDronePoseRaw(::grpc::ClientContext* context, const ::RatSim::DronePose& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_GetDroneOdom_;
-    const ::grpc::internal::RpcMethod rpcmethod_SendDronePose_;
-  };
-  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-
-  class Service : public ::grpc::Service {
-   public:
-    Service();
-    virtual ~Service();
-    virtual ::grpc::Status GetDroneOdom(::grpc::ServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response);
-    virtual ::grpc::Status SendDronePose(::grpc::ServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response);
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_GetDroneOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetDroneOdom() {
-      ::grpc::Service::MarkMethodAsync(0);
-    }
-    ~WithAsyncMethod_GetDroneOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDroneOdom(::grpc::ServerContext* context, ::RatSim::RobotName* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Odometry>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithAsyncMethod_SendDronePose : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_SendDronePose() {
-      ::grpc::Service::MarkMethodAsync(1);
-    }
-    ~WithAsyncMethod_SendDronePose() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSendDronePose(::grpc::ServerContext* context, ::RatSim::DronePose* request, ::grpc::ServerAsyncResponseWriter< ::RatSim::Status>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_GetDroneOdom<WithAsyncMethod_SendDronePose<Service > > AsyncService;
-  template <class BaseClass>
-  class WithCallbackMethod_GetDroneOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetDroneOdom() {
-      ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::RobotName* request, ::RatSim::Odometry* response) { return this->GetDroneOdom(context, request, response); }));}
-    void SetMessageAllocatorFor_GetDroneOdom(
-        ::grpc::MessageAllocator< ::RatSim::RobotName, ::RatSim::Odometry>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::RobotName, ::RatSim::Odometry>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetDroneOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDroneOdom(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_SendDronePose : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_SendDronePose() {
-      ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::RatSim::DronePose* request, ::RatSim::Status* response) { return this->SendDronePose(context, request, response); }));}
-    void SetMessageAllocatorFor_SendDronePose(
-        ::grpc::MessageAllocator< ::RatSim::DronePose, ::RatSim::Status>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::RatSim::DronePose, ::RatSim::Status>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_SendDronePose() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SendDronePose(
-      ::grpc::CallbackServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/)  { return nullptr; }
-  };
-  typedef WithCallbackMethod_GetDroneOdom<WithCallbackMethod_SendDronePose<Service > > CallbackService;
-  typedef CallbackService ExperimentalCallbackService;
-  template <class BaseClass>
-  class WithGenericMethod_GetDroneOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetDroneOdom() {
-      ::grpc::Service::MarkMethodGeneric(0);
-    }
-    ~WithGenericMethod_GetDroneOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_SendDronePose : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_SendDronePose() {
-      ::grpc::Service::MarkMethodGeneric(1);
-    }
-    ~WithGenericMethod_SendDronePose() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetDroneOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetDroneOdom() {
-      ::grpc::Service::MarkMethodRaw(0);
-    }
-    ~WithRawMethod_GetDroneOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetDroneOdom(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_SendDronePose : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_SendDronePose() {
-      ::grpc::Service::MarkMethodRaw(1);
-    }
-    ~WithRawMethod_SendDronePose() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestSendDronePose(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetDroneOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetDroneOdom() {
-      ::grpc::Service::MarkMethodRawCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDroneOdom(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetDroneOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetDroneOdom(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_SendDronePose : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_SendDronePose() {
-      ::grpc::Service::MarkMethodRawCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SendDronePose(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_SendDronePose() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* SendDronePose(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetDroneOdom : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetDroneOdom() {
-      ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::RobotName, ::RatSim::Odometry>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::RatSim::RobotName, ::RatSim::Odometry>* streamer) {
-                       return this->StreamedGetDroneOdom(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetDroneOdom() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetDroneOdom(::grpc::ServerContext* /*context*/, const ::RatSim::RobotName* /*request*/, ::RatSim::Odometry* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetDroneOdom(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::RobotName,::RatSim::Odometry>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_SendDronePose : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_SendDronePose() {
-      ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::RatSim::DronePose, ::RatSim::Status>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::RatSim::DronePose, ::RatSim::Status>* streamer) {
-                       return this->StreamedSendDronePose(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_SendDronePose() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status SendDronePose(::grpc::ServerContext* /*context*/, const ::RatSim::DronePose* /*request*/, ::RatSim::Status* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSendDronePose(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RatSim::DronePose,::RatSim::Status>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_GetDroneOdom<WithStreamedUnaryMethod_SendDronePose<Service > > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetDroneOdom<WithStreamedUnaryMethod_SendDronePose<Service > > StreamedService;
 };
 
 }  // namespace RatSim

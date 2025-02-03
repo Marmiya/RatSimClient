@@ -108,6 +108,40 @@ struct RobotNameDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RobotNameDefaultTypeInternal _RobotName_default_instance_;
 
+inline constexpr RGBCameraImageData::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        data_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        width_{0u},
+        height_{0u},
+        format_{static_cast< ::RatSim::RGBCameraImageData_Format >(0)},
+        timestamp_{0u},
+        bytes_per_pixel_{0u},
+        stride_{0u},
+        is_compressed_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RGBCameraImageData::RGBCameraImageData(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RGBCameraImageDataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RGBCameraImageDataDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RGBCameraImageDataDefaultTypeInternal() {}
+  union {
+    RGBCameraImageData _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RGBCameraImageDataDefaultTypeInternal _RGBCameraImageData_default_instance_;
+
 inline constexpr Pose::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : x_{0},
@@ -474,8 +508,7 @@ struct LidarDataAndOdomDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LidarDataAndOdomDefaultTypeInternal _LidarDataAndOdom_default_instance_;
 }  // namespace RatSim
-static constexpr const ::_pb::EnumDescriptor**
-    file_level_enum_descriptors_RatSim_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_RatSim_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_RatSim_2eproto = nullptr;
 const ::uint32_t
@@ -660,6 +693,30 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::RatSim::DepthCameraImageData, _impl_.data_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.width_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.height_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.data_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.format_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.timestamp_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.bytes_per_pixel_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.stride_),
+        PROTOBUF_FIELD_OFFSET(::RatSim::RGBCameraImageData, _impl_.is_compressed_),
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        0,
+        1,
+        2,
         PROTOBUF_FIELD_OFFSET(::RatSim::DronePose, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::RatSim::DronePose, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -692,7 +749,8 @@ static const ::_pbi::MigrationSchema
         {149, 159, -1, sizeof(::RatSim::LidarDataAndOdom)},
         {161, -1, -1, sizeof(::RatSim::DepthCameraPointData)},
         {170, -1, -1, sizeof(::RatSim::DepthCameraImageData)},
-        {179, 189, -1, sizeof(::RatSim::DronePose)},
+        {179, 195, -1, sizeof(::RatSim::RGBCameraImageData)},
+        {203, 213, -1, sizeof(::RatSim::DronePose)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::RatSim::_Point_default_instance_._instance,
@@ -711,6 +769,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::RatSim::_LidarDataAndOdom_default_instance_._instance,
     &::RatSim::_DepthCameraPointData_default_instance_._instance,
     &::RatSim::_DepthCameraImageData_default_instance_._instance,
+    &::RatSim::_RGBCameraImageData_default_instance_._instance,
     &::RatSim::_DronePose_default_instance_._instance,
 };
 const char descriptor_table_protodef_RatSim_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
@@ -740,38 +799,52 @@ const char descriptor_table_protodef_RatSim_2eproto[] ABSL_ATTRIBUTE_SECTION_VAR
     "arData\022\036\n\004odom\030\002 \001(\0132\020.RatSim.Odometry\"3"
     "\n\024DepthCameraPointData\022\033\n\004data\030\001 \003(\0132\r.R"
     "atSim.Point\"$\n\024DepthCameraImageData\022\014\n\004d"
-    "ata\030\001 \003(\002\"5\n\tDronePose\022\014\n\004name\030\001 \001(\t\022\032\n\004"
-    "pose\030\002 \001(\0132\014.RatSim.Pose2\275\001\n\014LidarServic"
-    "e\0224\n\014GetLiDARData\022\021.RatSim.RobotName\032\021.R"
-    "atSim.LidarData\0223\n\014GetLiDAROdom\022\021.RatSim"
-    ".RobotName\032\020.RatSim.Odometry\022B\n\023GetLiDAR"
-    "DataAndOdom\022\021.RatSim.RobotName\032\030.RatSim."
-    "LidarDataAndOdom2;\n\013MeshService\022,\n\010SendM"
-    "esh\022\020.RatSim.MeshData\032\016.RatSim.Status2[\n"
-    "\021PointCloudService\022F\n\027SendPointCloudWith"
-    "Color\022\033.RatSim.PointCloudWithColor\032\016.Rat"
-    "Sim.Status2\360\001\n\022DepthCameraService\022M\n\027Get"
-    "DepthCameraPointData\022\024.RatSim.EmptyReque"
-    "st\032\034.RatSim.DepthCameraPointData\022M\n\027GetD"
-    "epthCameraImageData\022\024.RatSim.EmptyReques"
-    "t\032\034.RatSim.DepthCameraImageData\022<\n\022GetDe"
-    "pthCameraOdom\022\024.RatSim.EmptyRequest\032\020.Ra"
-    "tSim.Odometry2w\n\014DroneService\0223\n\014GetDron"
-    "eOdom\022\021.RatSim.RobotName\032\020.RatSim.Odomet"
-    "ry\0222\n\rSendDronePose\022\021.RatSim.DronePose\032\016"
-    ".RatSim.Statusb\006proto3"
+    "ata\030\001 \003(\002\"\266\002\n\022RGBCameraImageData\022\r\n\005widt"
+    "h\030\001 \001(\r\022\016\n\006height\030\002 \001(\r\022\014\n\004data\030\003 \001(\014\0221\n"
+    "\006format\030\004 \001(\0162!.RatSim.RGBCameraImageDat"
+    "a.Format\022\021\n\ttimestamp\030\005 \001(\r\022\034\n\017bytes_per"
+    "_pixel\030\006 \001(\rH\000\210\001\001\022\023\n\006stride\030\007 \001(\rH\001\210\001\001\022\032"
+    "\n\ris_compressed\030\010 \001(\010H\002\210\001\001\"-\n\006Format\022\007\n\003"
+    "RGB\020\000\022\007\n\003BGR\020\001\022\010\n\004JPEG\020\002\022\007\n\003PNG\020\003B\022\n\020_by"
+    "tes_per_pixelB\t\n\007_strideB\020\n\016_is_compress"
+    "ed\"5\n\tDronePose\022\014\n\004name\030\001 \001(\t\022\032\n\004pose\030\002 "
+    "\001(\0132\014.RatSim.Pose2\275\001\n\014LidarService\0224\n\014Ge"
+    "tLiDARData\022\021.RatSim.RobotName\032\021.RatSim.L"
+    "idarData\0223\n\014GetLiDAROdom\022\021.RatSim.RobotN"
+    "ame\032\020.RatSim.Odometry\022B\n\023GetLiDARDataAnd"
+    "Odom\022\021.RatSim.RobotName\032\030.RatSim.LidarDa"
+    "taAndOdom2\347\001\n\022DepthCameraService\022J\n\027GetD"
+    "epthCameraPointData\022\021.RatSim.RobotName\032\034"
+    ".RatSim.DepthCameraPointData\022J\n\027GetDepth"
+    "CameraImageData\022\021.RatSim.RobotName\032\034.Rat"
+    "Sim.DepthCameraImageData\0229\n\022GetDepthCame"
+    "raOdom\022\021.RatSim.RobotName\032\020.RatSim.Odome"
+    "try2\223\001\n\020RGBCameraService\022F\n\025GetRGBCamera"
+    "ImageData\022\021.RatSim.RobotName\032\032.RatSim.RG"
+    "BCameraImageData\0227\n\020GetRGBCameraOdom\022\021.R"
+    "atSim.RobotName\032\020.RatSim.Odometry2w\n\014Dro"
+    "neService\0223\n\014GetDroneOdom\022\021.RatSim.Robot"
+    "Name\032\020.RatSim.Odometry\0222\n\rSendDronePose\022"
+    "\021.RatSim.DronePose\032\016.RatSim.Status2q\n\nCa"
+    "rService\0221\n\nGetCarOdom\022\021.RatSim.RobotNam"
+    "e\032\020.RatSim.Odometry\0220\n\013SendCarPose\022\021.Rat"
+    "Sim.DronePose\032\016.RatSim.Status2;\n\013MeshSer"
+    "vice\022,\n\010SendMesh\022\020.RatSim.MeshData\032\016.Rat"
+    "Sim.Status2[\n\021PointCloudService\022F\n\027SendP"
+    "ointCloudWithColor\022\033.RatSim.PointCloudWi"
+    "thColor\032\016.RatSim.Statusb\006proto3"
 };
 static ::absl::once_flag descriptor_table_RatSim_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_RatSim_2eproto = {
     false,
     false,
-    1782,
+    2351,
     descriptor_table_protodef_RatSim_2eproto,
     "RatSim.proto",
     &descriptor_table_RatSim_2eproto_once,
     nullptr,
     0,
-    17,
+    18,
     schemas,
     file_default_instances,
     TableStruct_RatSim_2eproto::offsets,
@@ -779,6 +852,28 @@ PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_RatSim_2eproto
     file_level_service_descriptors_RatSim_2eproto,
 };
 namespace RatSim {
+const ::google::protobuf::EnumDescriptor* RGBCameraImageData_Format_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_RatSim_2eproto);
+  return file_level_enum_descriptors_RatSim_2eproto[0];
+}
+PROTOBUF_CONSTINIT const uint32_t RGBCameraImageData_Format_internal_data_[] = {
+    262144u, 0u, };
+bool RGBCameraImageData_Format_IsValid(int value) {
+  return 0 <= value && value <= 3;
+}
+#if (__cplusplus < 201703) && \
+  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+
+constexpr RGBCameraImageData_Format RGBCameraImageData::RGB;
+constexpr RGBCameraImageData_Format RGBCameraImageData::BGR;
+constexpr RGBCameraImageData_Format RGBCameraImageData::JPEG;
+constexpr RGBCameraImageData_Format RGBCameraImageData::PNG;
+constexpr RGBCameraImageData_Format RGBCameraImageData::Format_MIN;
+constexpr RGBCameraImageData_Format RGBCameraImageData::Format_MAX;
+constexpr int RGBCameraImageData::Format_ARRAYSIZE;
+
+#endif  // (__cplusplus < 201703) &&
+        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
 class Point::_Internal {
@@ -5019,6 +5114,422 @@ void DepthCameraImageData::InternalSwap(DepthCameraImageData* PROTOBUF_RESTRICT 
 }
 
 ::google::protobuf::Metadata DepthCameraImageData::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RGBCameraImageData::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<RGBCameraImageData>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_._has_bits_);
+};
+
+RGBCameraImageData::RGBCameraImageData(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RatSim.RGBCameraImageData)
+}
+inline PROTOBUF_NDEBUG_INLINE RGBCameraImageData::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::RatSim::RGBCameraImageData& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        data_(arena, from.data_) {}
+
+RGBCameraImageData::RGBCameraImageData(
+    ::google::protobuf::Arena* arena,
+    const RGBCameraImageData& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RGBCameraImageData* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, width_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, width_),
+           offsetof(Impl_, is_compressed_) -
+               offsetof(Impl_, width_) +
+               sizeof(Impl_::is_compressed_));
+
+  // @@protoc_insertion_point(copy_constructor:RatSim.RGBCameraImageData)
+}
+inline PROTOBUF_NDEBUG_INLINE RGBCameraImageData::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        data_(arena) {}
+
+inline void RGBCameraImageData::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, width_),
+           0,
+           offsetof(Impl_, is_compressed_) -
+               offsetof(Impl_, width_) +
+               sizeof(Impl_::is_compressed_));
+}
+RGBCameraImageData::~RGBCameraImageData() {
+  // @@protoc_insertion_point(destructor:RatSim.RGBCameraImageData)
+  SharedDtor(*this);
+}
+inline void RGBCameraImageData::SharedDtor(MessageLite& self) {
+  RGBCameraImageData& this_ = static_cast<RGBCameraImageData&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.data_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* RGBCameraImageData::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) RGBCameraImageData(arena);
+}
+constexpr auto RGBCameraImageData::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RGBCameraImageData),
+                                            alignof(RGBCameraImageData));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull RGBCameraImageData::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_RGBCameraImageData_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &RGBCameraImageData::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<RGBCameraImageData>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &RGBCameraImageData::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<RGBCameraImageData>(), &RGBCameraImageData::ByteSizeLong,
+            &RGBCameraImageData::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_._cached_size_),
+        false,
+    },
+    &RGBCameraImageData::kDescriptorMethods,
+    &descriptor_table_RatSim_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* RGBCameraImageData::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 8, 0, 0, 2> RGBCameraImageData::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_._has_bits_),
+    0, // no _extensions_
+    8, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967040,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    8,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::RatSim::RGBCameraImageData>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // optional bool is_compressed = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RGBCameraImageData, _impl_.is_compressed_), 2>(),
+     {64, 2, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.is_compressed_)}},
+    // uint32 width = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RGBCameraImageData, _impl_.width_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.width_)}},
+    // uint32 height = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RGBCameraImageData, _impl_.height_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.height_)}},
+    // bytes data = 3;
+    {::_pbi::TcParser::FastBS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.data_)}},
+    // .RatSim.RGBCameraImageData.Format format = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RGBCameraImageData, _impl_.format_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.format_)}},
+    // uint32 timestamp = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RGBCameraImageData, _impl_.timestamp_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.timestamp_)}},
+    // optional uint32 bytes_per_pixel = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RGBCameraImageData, _impl_.bytes_per_pixel_), 0>(),
+     {48, 0, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.bytes_per_pixel_)}},
+    // optional uint32 stride = 7;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RGBCameraImageData, _impl_.stride_), 1>(),
+     {56, 1, 0, PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.stride_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 width = 1;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.width_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 height = 2;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.height_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // bytes data = 3;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.data_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .RatSim.RGBCameraImageData.Format format = 4;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.format_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // uint32 timestamp = 5;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.timestamp_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // optional uint32 bytes_per_pixel = 6;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.bytes_per_pixel_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // optional uint32 stride = 7;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.stride_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // optional bool is_compressed = 8;
+    {PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.is_compressed_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void RGBCameraImageData::Clear() {
+// @@protoc_insertion_point(message_clear_start:RatSim.RGBCameraImageData)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.data_.ClearToEmpty();
+  ::memset(&_impl_.width_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.timestamp_) -
+      reinterpret_cast<char*>(&_impl_.width_)) + sizeof(_impl_.timestamp_));
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000007u) {
+    ::memset(&_impl_.bytes_per_pixel_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.is_compressed_) -
+        reinterpret_cast<char*>(&_impl_.bytes_per_pixel_)) + sizeof(_impl_.is_compressed_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* RGBCameraImageData::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const RGBCameraImageData& this_ = static_cast<const RGBCameraImageData&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* RGBCameraImageData::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const RGBCameraImageData& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:RatSim.RGBCameraImageData)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 width = 1;
+          if (this_._internal_width() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_width(), target);
+          }
+
+          // uint32 height = 2;
+          if (this_._internal_height() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_height(), target);
+          }
+
+          // bytes data = 3;
+          if (!this_._internal_data().empty()) {
+            const std::string& _s = this_._internal_data();
+            target = stream->WriteBytesMaybeAliased(3, _s, target);
+          }
+
+          // .RatSim.RGBCameraImageData.Format format = 4;
+          if (this_._internal_format() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                4, this_._internal_format(), target);
+          }
+
+          // uint32 timestamp = 5;
+          if (this_._internal_timestamp() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                5, this_._internal_timestamp(), target);
+          }
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional uint32 bytes_per_pixel = 6;
+          if (cached_has_bits & 0x00000001u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                6, this_._internal_bytes_per_pixel(), target);
+          }
+
+          // optional uint32 stride = 7;
+          if (cached_has_bits & 0x00000002u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                7, this_._internal_stride(), target);
+          }
+
+          // optional bool is_compressed = 8;
+          if (cached_has_bits & 0x00000004u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                8, this_._internal_is_compressed(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:RatSim.RGBCameraImageData)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t RGBCameraImageData::ByteSizeLong(const MessageLite& base) {
+          const RGBCameraImageData& this_ = static_cast<const RGBCameraImageData&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t RGBCameraImageData::ByteSizeLong() const {
+          const RGBCameraImageData& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:RatSim.RGBCameraImageData)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // bytes data = 3;
+            if (!this_._internal_data().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_data());
+            }
+            // uint32 width = 1;
+            if (this_._internal_width() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_width());
+            }
+            // uint32 height = 2;
+            if (this_._internal_height() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_height());
+            }
+            // .RatSim.RGBCameraImageData.Format format = 4;
+            if (this_._internal_format() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_format());
+            }
+            // uint32 timestamp = 5;
+            if (this_._internal_timestamp() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_timestamp());
+            }
+          }
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x00000007u) {
+            // optional uint32 bytes_per_pixel = 6;
+            if (cached_has_bits & 0x00000001u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_bytes_per_pixel());
+            }
+            // optional uint32 stride = 7;
+            if (cached_has_bits & 0x00000002u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_stride());
+            }
+            // optional bool is_compressed = 8;
+            if (cached_has_bits & 0x00000004u) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void RGBCameraImageData::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<RGBCameraImageData*>(&to_msg);
+  auto& from = static_cast<const RGBCameraImageData&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:RatSim.RGBCameraImageData)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
+  }
+  if (from._internal_width() != 0) {
+    _this->_impl_.width_ = from._impl_.width_;
+  }
+  if (from._internal_height() != 0) {
+    _this->_impl_.height_ = from._impl_.height_;
+  }
+  if (from._internal_format() != 0) {
+    _this->_impl_.format_ = from._impl_.format_;
+  }
+  if (from._internal_timestamp() != 0) {
+    _this->_impl_.timestamp_ = from._impl_.timestamp_;
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000007u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_impl_.bytes_per_pixel_ = from._impl_.bytes_per_pixel_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_impl_.stride_ = from._impl_.stride_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_impl_.is_compressed_ = from._impl_.is_compressed_;
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RGBCameraImageData::CopyFrom(const RGBCameraImageData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:RatSim.RGBCameraImageData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RGBCameraImageData::InternalSwap(RGBCameraImageData* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, &other->_impl_.data_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.is_compressed_)
+      + sizeof(RGBCameraImageData::_impl_.is_compressed_)
+      - PROTOBUF_FIELD_OFFSET(RGBCameraImageData, _impl_.width_)>(
+          reinterpret_cast<char*>(&_impl_.width_),
+          reinterpret_cast<char*>(&other->_impl_.width_));
+}
+
+::google::protobuf::Metadata RGBCameraImageData::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
